@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+    <import resource="../put_to.xml" />
+
+    <bean id="pianeta-mamma-messages"
+          class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+          p:target="li.postbitlegacy.postbitim.postcontainer">
+        <property name="action">
+            <bean
+                class="it.stilo.uCrawler.actions.extraction.flexible.ExtractionPipeline">
+                <property name="actions">
+                    <list>
+                        <ref bean="pianeta-mamma-message-date" />
+                        <ref bean="pianeta-mamma-message-text" />
+                        <ref bean="pianeta-mamma-post-id" />
+                        <ref bean="pianeta-mamma-message-username" />              
+                         
+                        <ref bean="voldExtractClient" /> 
+                    </list>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- data del messaggio -->
+    <bean id="pianeta-mamma-message-date"
+          class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+          p:target="span.date">
+        <property name="action">
+            <bean
+                class="it.stilo.uCrawler.actions.extraction.flexible.ExtractionPipeline"
+                p:actions-ref="pianeta-mamma-message-date-actions" />
+        </property>
+    </bean>
+
+    <util:list id="pianeta-mamma-message-date-actions">
+        <bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+              p:toDo-ref="get-text" p:where-ref="put-to-date" />
+        <ref bean="put-to-screen" />
+    </util:list>
+
+    <!-- testo del messaggio -->
+    <bean id="pianeta-mamma-message-text"
+          class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+          p:target="div[id*=post_message]">
+        <property name="action">
+            <bean
+                class="it.stilo.uCrawler.actions.extraction.flexible.ExtractionPipeline"
+                p:actions-ref="pianeta-mamma-message-text-actions" />
+        </property>
+    </bean>
+
+    <util:list id="pianeta-mamma-message-text-actions">
+        <bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+              p:toDo-ref="pianeta-mamma-get-clean-text" p:where-ref="put-to-message" />
+        <ref bean="put-to-screen" />
+    </util:list>
+
+    <bean id="pianeta-mamma-get-clean-text"
+          class="it.stilo.uCrawler.actions.extraction.flexible.GetCleanText"
+          p:toRemove="div.bbcode_quote" />
+
+    <!-- id del messaggio -->
+    <bean id="pianeta-mamma-post-id"
+          class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+          p:target="li.postbitlegacy.postbitim.postcontainer">
+        <property name="action">
+            <bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+                  p:toDo-ref="pianeta-mamma-get-post-id" p:where-ref="put-to-post-id" />
+        </property>
+    </bean>
+
+    <bean id="pianeta-mamma-get-post-id" class="it.stilo.uCrawler.actions.extraction.flexible.GetId"
+          p:regex="(?&lt;=post_)\d+">
+    </bean>
+
+    <!-- utente che ha postato il messaggio -->
+    <bean id="pianeta-mamma-message-username"
+          class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+          p:target="div.popupmenu.memberaction , span.username.guest">
+        <property name="action">
+            <bean
+                class="it.stilo.uCrawler.actions.extraction.flexible.ExtractionPipeline"
+                p:actions-ref="pianeta-mamma-username-actions-list" />
+        </property>
+    </bean>
+
+    <util:list id="pianeta-mamma-username-actions-list">
+        <bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+              p:toDo-ref="get-text" p:where-ref="put-to-username" />
+        <ref bean="put-to-screen" />
+    </util:list>
+
+</beans>	

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <context:annotation-config/>       
+    <!-- Oggetti ProxyAddress, racchiudono un indirizzo proxy e le credenziali di accesso.
+            Popolano la lista di proxy descritta in concurrent_fetcher.xml
+    -->
+    <bean id="proxy1" class="it.stilo.uCrawler.concurrentFetcher.proxy.ProxyAddress">
+        <!-- Indirizzo e porta -->
+        <property name="httpHost">
+            <bean class="org.apache.http.HttpHost">
+                <constructor-arg value="221.176.189.14" />
+                <constructor-arg value="8080" />
+            </bean>
+        </property>
+        <!-- Credenziali di accesso se presenti -->
+        <property name="credentials">
+            <bean class="org.apache.http.auth.UsernamePasswordCredentials">
+                <constructor-arg value="username" />
+                <constructor-arg value="password" />
+            </bean>
+        </property>
+        <property name="pageQualityThreshold" value="0.4f" />
+        <property name="proxyQualityThreshold" value="0.6f" />
+    </bean>
+	
+    <bean id="proxy2" class="it.stilo.uCrawler.concurrentFetcher.proxy.ProxyAddress">
+        <property name="httpHost">
+            <!-- Indirizzo e porta -->
+            <bean class="org.apache.http.HttpHost">
+                <constructor-arg value="222.243.221.77" />
+                <constructor-arg value="8080" />
+            </bean>
+        </property>
+        <!-- Credenziali di accesso se presenti -->
+        <property name="credentials">
+            <bean class="org.apache.http.auth.UsernamePasswordCredentials">
+                <constructor-arg value="username" />
+                <constructor-arg value="password" />
+            </bean>
+        </property>
+        <property name="pageQualityThreshold" value="0.4f" />
+        <property name="proxyQualityThreshold" value="0.6f" />
+    </bean>
+</beans>

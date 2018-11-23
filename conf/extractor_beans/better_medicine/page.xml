@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+	<import resource="../get_text.xml" />
+	<import resource="../link_to_crawl.xml" />
+	<import resource="../put_to.xml" />
+
+	<!-- estrazione del breadcrumb -->
+	<bean id="better-medicine-breadcrumb"
+		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+		p:target="div[id=breadcrumb] > ul > li.navbit > a[href] , div[id=pagetitle] > h1">
+		<property name="action">
+			<bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+				p:toDo-ref="get-text" p:where-ref="put-to-new-breadcrumb" />
+		</property>
+	</bean>
+
+	<!-- estrae i link alle sezioni del forum contenuti nella pagina -->
+	<bean id="better-medicine-sections"
+		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+		p:target="div.forumdata a[href] , span.forumtitle > a[href]"
+		p:action-ref="link-to-crawl" />
+
+	<!-- estrae i link alle discussioni contenuti nella pagina -->
+	<bean id="better-medicine-threads"
+		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+		p:target="h3.threadtitle > a[href]" p:action-ref="link-to-crawl">
+	</bean>
+
+	<!-- id della discussione -->
+	<bean id="better-medicine-thread-id"
+		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+		p:target="div[id=pagetitle] > h1 > span.threadtitle > a[href]">
+		<property name="action">
+			<bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+				p:toDo-ref="better-medicine-get-thread-id" p:where-ref="put-to-thread-id" />
+		</property>
+	</bean>
+
+	<bean id="better-medicine-get-thread-id"
+		class="it.stilo.uCrawler.actions.extraction.flexible.GetHyperLink"
+		p:regex="(?&lt;=showthread.php/)\d+">
+	</bean>
+
+	<!-- i link alla pagine della sezione/discussione -->
+	<!-- forum con problema: prendendo sempre tutti i link di paginazione, la 
+		stessa pagina potrebbe essere presa due volte (url con e senza parametro s) --> 
+	<!-- usare "span.prev_next > a[rel=next]" come target di RouteToFirst per 
+		evitare il problema -->
+	<bean id="better-medicine-next"
+		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+		p:target="div.pagination_bottom span > a[href] , div.threadpagenav span > a[href]" p:action-ref="link-to-crawl" />
+
+</beans>

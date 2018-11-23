@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util-3.0.xsd" >
+
+    <import resource="concurrent_fetcher.xml"/>
+    <import resource="extractor_beans/hardware_upgrade.xml" />
+    
+    <bean id="crawler" class="it.stilo.uCrawler.crawler.Crawler">
+        <property name="manager">
+            <ref bean="urlsManager" />          
+        </property>
+
+        <property name="fetcher">
+            <ref bean="concurrentFetcher" />
+        </property>
+                
+        <property name="sleepTime" value="500" />
+                        
+    </bean>
+     
+    <bean id="pipeline" class="it.stilo.uCrawler.core.actions.PipelinedAction">
+        <property name="actions">
+            <list>
+                <ref bean="hardware-upgrade-forum-extraction" />       
+                <bean class ="it.stilo.uCrawler.actions.storage.mapdb.LocalStorageTestLoad">
+                    <property name="dataDir" value="./storage/local/MapDB-LocalStoragePage" />
+                    <property name="storeName" value="/CSI-LocalStoragePage" />
+                    <property name="mapName" value="LocalStoragePage" />
+                </bean>                                               
+                <bean class="it.stilo.uCrawler.url.UrlManagerToActionAdapter" c:_0-ref="urlsManager"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="urlsManager" class="it.stilo.uCrawler.url.URLManager">
+        <constructor-arg>
+            <bean class="it.stilo.uCrawler.url.datastructure.SimpleDataStructure"/>
+        </constructor-arg>
+    </bean>
+    
+    <bean class="it.stilo.uCrawler.url.SeedsIgniter">
+        <constructor-arg>
+            <ref bean="urlsManager"/>
+        </constructor-arg>
+        <constructor-arg>       
+            <list>
+                <bean class="java.net.URI" c:_0="http://www.hwupgrade.it/forum/forumdisplay.php?f=82"/>
+            </list>
+        </constructor-arg>
+    </bean>
+    
+</beans>
+

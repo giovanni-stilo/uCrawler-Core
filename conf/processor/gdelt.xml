@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns:c="http://www.springframework.org/schema/c" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns="http://www.springframework.org/schema/beans" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans  
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/util 
+        http://www.springframework.org/schema/util/spring-util-3.0.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <context:annotation-config />
+
+    <!-- use this to process cache sequentially -->
+
+    <bean id="runner" class="it.stilo.uCrawler.cache.CacheProcessorRunner">
+        <constructor-arg>
+            <ref bean="processor" />
+        </constructor-arg>
+    </bean>
+
+    <bean id="processor" class="it.stilo.uCrawler.cache.CacheProcessor">
+        <constructor-arg>
+            <ref bean="pipeline" />
+        </constructor-arg>
+        <constructor-arg>
+            <ref bean="cache" />
+        </constructor-arg>
+    </bean>
+
+    <!--	<bean id="actions" class="it.stilo.uCrawler.actions.ConcurrentActionDispatcher">
+            <constructor-arg ref="pipeline" />
+            <constructor-arg value="50" />
+    </bean>-->
+    
+   <bean id="pipeline" class="it.stilo.uCrawler.core.actions.PipelinedAction">
+        <property name="actions">
+            <list>
+           <!-- <bean class="it.stilo.uCrawler.actions.tagme.CleanPage" />
+            <bean class="it.stilo.uCrawler.actions.tagme.ReaderAndSplitterFile" init-method="init" destroy-method="finalize">
+            <property name="fileName" value="../gdelt-tsv/filteredNews" />
+            <property name="mapName" value="../gdelt-tsv/testdb" /> 
+            </bean>
+            <bean class="it.stilo.uCrawler.actions.tagme.Tagger"/>
+           <bean class="it.stilo.uCrawler.actions.tagme.PrintPage" />-->
+           <bean class="it.stilo.uCrawler.actions.tagme.HTMLExctractor" init-method="init" destroy-method="finalize">
+           <property name="tags" value="./htmlAnalyzer/tags" />
+           <property name="classname" value="./htmlAnalyzer/classname" />
+           <property name="id" value="./htmlAnalyzer/id" />
+           <property name="tagsForPage" value="./htmlAnalyzer/tagsForPage" />
+           <property name="classnameForPage" value="./htmlAnalyzer/classnameForPage" />
+           <property name="idForPage" value="./htmlAnalyzer/idForPage" />
+           </bean>
+          <!-- <bean class="it.stilo.uCrawler.actions.tagme.LuceneIndex" init-method="init" destroy-method="finalize"/>-->
+           
+            </list>
+        </property>
+    </bean>
+
+    <!--<bean id="printer" class="it.stilo.uCrawler.actions.PagePrinter"></bean>-->
+
+    <bean id="cache"
+          class="it.stilo.uCrawler.actions.storage.mapdb.LocalStorageLoad">
+        <constructor-arg>
+            <bean class="it.stilo.uCrawler.actions.storage.mapdb.MapDBInstance"
+                  destroy-method="destroy">
+                 <!--<property name="dataDir" value="../GDELT" />-->
+                 <property name="dataDir" value="storage/GDELT_1" />
+                <property name="storeName" value="/GDELT" />
+            </bean>
+        </constructor-arg>
+        <property name="mapName" value="pages" />
+    </bean>
+
+</beans>

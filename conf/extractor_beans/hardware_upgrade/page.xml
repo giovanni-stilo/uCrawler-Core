@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+	<import resource="../get_text.xml" />
+	<import resource="../link_to_crawl.xml" />
+	<import resource="../put_to.xml" />
+
+	<!-- estrazione del breadcrumb -->
+	<bean id="hardware-upgrade-breadcrumb"
+		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+		p:target="span.navbar > a[href], td.navbar, div.navbar">
+		<property name="action">
+			<bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+				p:toDo-ref="get-text" p:where-ref="put-to-new-breadcrumb" />
+		</property>
+	</bean>
+
+	<!-- estrae i link alle sezioni del forum contenuti nella pagina -->
+	<bean id="hardware-upgrade-sections"
+		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+		p:target="table.tborder &gt; tbody &gt; tr &gt; td.tcat &gt; a:not([style]) , table.tborder &gt; tbody &gt; tr &gt; td.alt1Active &gt; table &gt; tbody &gt; tr &gt; td &gt; div:not([class]) &gt; a[href]"
+		p:action-ref="link-to-crawl" />
+
+	<!-- estrae i link alle discussioni contenuti nella pagina -->
+	<bean id="hardware-upgrade-threads"
+		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+		p:target="a[id*=thread_title_]" p:action-ref="link-to-crawl" />
+
+	<!-- id della discussione -->
+	<bean id="hardware-upgrade-thread-id"
+		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+		p:target="td > table > tbody > tr > td.navbar > a[href]">
+		<property name="action">
+			<bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+				p:toDo-ref="hardware-upgrade-get-thread-id" p:where-ref="put-to-thread-id" />
+		</property>
+	</bean>
+
+	<bean id="hardware-upgrade-get-thread-id"
+		class="it.stilo.uCrawler.actions.extraction.flexible.GetHyperLink"
+		p:regex="(?&lt;=t=)\d+">
+	</bean>
+
+	<!-- i link alla pagine della sezione/discussione -->
+	<!-- forum con problema: prendendo sempre tutti i link di paginazione, la 
+		stessa pagina potrebbe essere presa due volte (url con e senza parametro s) -->
+	<!-- usare "div.pagenav td.alt2 + td.alt1 &gt; a[href]" come target di RouteToFirst 
+		per evitare il problema -->
+	<bean id="hardware-upgrade-next"
+		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+		p:target="div.pagenav td.alt1 > a[href]" p:action-ref="link-to-crawl" />
+
+</beans>

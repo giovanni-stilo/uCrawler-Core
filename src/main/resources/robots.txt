@@ -1,0 +1,26 @@
+Sitemap: http://www.hwupgrade.it/sitemap.txt
+
+User-agent: Slurp
+Crawl-delay: 5
+
+User-agent: Teoma
+Crawl-delay: 5
+
+User-agent: bing
+Crawl-delay: 1
+
+User-agent: bingbot
+Crawl-delay: 1
+
+User-agent: Mediapartners-Google
+Disallow:
+
+User-agent: proximic
+Disallow: /forum/
+
+User-agent: *
+Disallow: /adv/
+Disallow: /ads_pages/
+Disallow: /forum/memberlist.php
+Disallow: /forum/search.php
+Allow: /

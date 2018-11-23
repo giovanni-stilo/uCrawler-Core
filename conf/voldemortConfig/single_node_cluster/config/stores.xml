@@ -1,0 +1,37 @@
+<stores>
+    <!--Store per salvataggio delle pagine (con json strutturato)-->
+    <store>
+        <name>CSI</name>
+        <persistence>bdb</persistence>
+        <owners>harry@hogwarts.edu, hermoine@hogwarts.edu</owners>
+        <routing-strategy>consistent-routing</routing-strategy>
+        <routing>client</routing>
+        <replication-factor>1</replication-factor>
+        <required-reads>1</required-reads>
+        <required-writes>1</required-writes>
+        <key-serializer>
+            <type>string</type>
+        </key-serializer>
+        <value-serializer>
+            <type>json</type>
+            <schema-info>{"revtime":"int64", "page":"string"}</schema-info>
+        </value-serializer>
+    </store>  
+    <!--Store per salvataggio stringe (json) info estratte-->
+  
+    <store>
+        <name>CSI-Extract</name>
+        <persistence>bdb</persistence>
+        <routing-strategy>consistent-routing</routing-strategy>
+        <routing>client</routing>
+        <replication-factor>1</replication-factor>
+        <required-reads>1</required-reads>
+        <required-writes>1</required-writes>
+        <key-serializer>
+            <type>string</type>
+        </key-serializer>
+        <value-serializer>
+            <type>string</type>
+        </value-serializer>
+    </store>  
+</stores>

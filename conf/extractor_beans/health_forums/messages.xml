@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+	<import resource="../put_to.xml" />
+
+	<!-- health forums -->
+	<bean id="health-forums-messages"
+		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+		p:target="div#posts > div[align=center]">
+		<property name="action">
+			<bean
+				class="it.stilo.uCrawler.actions.extraction.flexible.ExtractionPipeline">
+				<property name="actions">
+					<list>
+						<ref bean="health-forums-message-date" />
+						<ref bean="health-forums-message-text" />
+						<ref bean="health-forums-post-id" />
+						<ref bean="health-forums-message-username" />
+					</list>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<!-- data del messaggio -->
+	<bean id="health-forums-message-date"
+		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+		p:target="tr[valign=top] > td.alt2 > div.smallfont">
+		<property name="action">
+			<bean
+				class="it.stilo.uCrawler.actions.extraction.flexible.ExtractionPipeline"
+				p:actions-ref="health-forums-date-actions-list" />
+		</property>
+	</bean>
+
+	<util:list id="health-forums-date-actions-list">
+		<bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+			p:toDo-ref="health-forums-get-clean-date" p:where-ref="put-to-date" />
+		<ref bean="put-to-screen" />
+	</util:list>
+
+	<bean id="health-forums-get-clean-date"
+		class="it.stilo.uCrawler.actions.extraction.flexible.GetCleanText"
+		p:toRemove="strong" />
+
+	<!-- testo del messaggio -->
+	<bean id="health-forums-message-text"
+		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+		p:target="div[id*=post_message]">
+		<property name="action">
+			<bean
+				class="it.stilo.uCrawler.actions.extraction.flexible.ExtractionPipeline"
+				p:actions-ref="health-forums-message-text-actions" />
+		</property>
+	</bean>
+
+	<util:list id="health-forums-message-text-actions">
+		<bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+			p:toDo-ref="health-forums-get-clean-text" p:where-ref="put-to-message" />
+		<ref bean="put-to-screen" />
+	</util:list>
+
+	<bean id="health-forums-get-clean-text"
+		class="it.stilo.uCrawler.actions.extraction.flexible.GetCleanText"
+		p:toRemove="div[style]:has(table)" />
+
+	<!-- id del messaggio -->
+	<bean id="health-forums-post-id"
+		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+		p:target="table[id*=post] > tbody > tr > td.thead > div > b > a[href]">
+		<property name="action">
+			<bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+				p:where-ref="put-to-post-id">
+				<property name="toDo">
+					<bean
+						class="it.stilo.uCrawler.actions.extraction.flexible.GetHyperLink"
+						p:regex="(?&lt;=#post)\d+">
+					</bean>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<!-- utente che ha postato il messaggio -->
+	<bean id="health-forums-message-username"
+		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+		p:target="div[id*=postmenu] &gt; a.bigusername , div[id*=postmenu]">
+		<property name="action">
+			<bean
+				class="it.stilo.uCrawler.actions.extraction.flexible.ExtractionPipeline"
+				p:actions-ref="health-forums-username-actions-list" />
+		</property>
+	</bean>
+
+	<util:list id="health-forums-username-actions-list">
+		<bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+			p:toDo-ref="get-text" p:where-ref="put-to-username" />
+		<ref bean="put-to-screen" />
+	</util:list>
+
+</beans>

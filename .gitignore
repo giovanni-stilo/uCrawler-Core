@@ -1,0 +1,6 @@
+/target/
+*.log
+/storage/
+/log/
+/index/
+/tmp/

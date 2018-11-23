@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <context:annotation-config/>
+        
+    <import resource="proxy_address_config.xml"/>
+        
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="locations">
+            <value>classpath*:/proxy.properties</value>
+        </property>
+    </bean>
+    	
+    <bean id="concurrentFetcher"  class="it.stilo.uCrawler.concurrentFetcher.ConcurrentFetcher">
+        <property name="action">
+            <ref bean="pipeline" />
+        </property>
+        <!-- Numero di proxy thread
+                == 0 -> usa un proxy plain
+                >= 1 -> usa N proxy con indirizzo proxy settato
+        -->
+        <property name="numberOfProxy" value="${p.numberOfProxy}" />
+        <property name="downloaderBuilder">
+            <ref bean="downloaderBuilder" />
+        </property>
+        <property name="proxyAddressProvider">
+            <ref bean="proxyProvider" />
+        </property>
+				
+        <!-- Numero di thread downloader, rappresentano i client -->
+        <property name="numberOfDownloader" value="${p.numberOfDownloader}" />
+				
+        <!-- se settata oltre ai proxy con indirizzo ne usa anche uno plain -->
+        <property name="hasLocalProxy" value="${p.hasLocalProxy}" />
+			
+        <property name="robotHandler">
+            <bean id="robotHandler" class="it.stilo.uCrawler.fetcher.robotFile.RobotFileHandler">
+            </bean>
+        </property>
+    </bean>
+	
+    <bean id="proxyProvider" class="it.stilo.uCrawler.concurrentFetcher.proxy.ProxyAddressProvider">
+        <!-- Lista di oggetti ProxyAddress -->
+        <property name="proxies">
+            <list>
+                <ref bean="proxy1"/>
+                <ref bean="proxy2"/>
+            </list>
+        </property>
+    </bean>
+	
+    <bean id="downloaderBuilder" class="it.stilo.uCrawler.concurrentFetcher.downloader.DownloaderBuilder">
+        <!-- stessa istanza pipeline del fetcher -->
+        <property name="action">
+            <ref bean="pipeline" />
+        </property>
+        <property name="connManager">
+            <bean id="connManager" class="org.apache.http.impl.conn.PoolingHttpClientConnectionManager">
+                <property name="maxTotal" value="50" />
+                <property name="defaultMaxPerRoute" value="25" />
+            </bean>
+        </property>
+        <property name="userAgent"> 
+            <ref bean="userAgent" />
+        </property>
+        <property name="maxConnections">
+            <bean id="maxConnections" class="it.stilo.uCrawler.concurrentFetcher.configuration.FixedValueConstraint">
+                <constructor-arg value="20" />
+            </bean>
+        </property>
+        <property name="connectionDelay">
+            <bean id="connectionDelay" class="it.stilo.uCrawler.concurrentFetcher.configuration.RandomValueConstraint">
+                <property name="max" value="10000"/>
+                <property name="min" value="2000"/>                
+            </bean>
+        </property>
+        <property name="maxPageForDomain">
+            <bean id="maxPageForDomain" class="it.stilo.uCrawler.concurrentFetcher.configuration.FixedValueConstraint">
+                <constructor-arg value="20" />
+            </bean>
+        </property>
+    </bean>
+	
+    <bean id="userAgent" class="it.stilo.uCrawler.concurrentFetcher.configuration.UserAgent">
+        <property name="userAgentFilePath" value="src/main/resources/useragent"/>
+        <!--<property name="defaultUserAgent" value="Mozilla/5.0 (compatible; CSI/0.6.1; +http://lcl.uniroma1.it/)"/>-->
+        <property name="defaultUserAgent" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:28.0) Gecko/20100101 Firefox/28.0"/>
+    </bean>
+	
+</beans>

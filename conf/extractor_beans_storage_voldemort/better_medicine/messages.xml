@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+    <import resource="../put_to.xml" />
+
+    <bean id="better-medicine-messages"
+              class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+              p:target="div[id=content] > div[class=postlist restrain] > ol[class=posts] > li[id*=post]">
+        <property name="action">
+            <bean
+                class="it.stilo.uCrawler.actions.extraction.flexible.ExtractionPipeline">
+                <property name="actions">
+                    <list>
+                        <ref bean="better-medicine-message-date" />
+                        <ref bean="better-medicine-message-text" />
+                        <ref bean="better-medicine-post-id" />
+                        <ref bean="better-medicine-message-username" />
+                        <ref bean="better-medicine-user-id" />
+                                                                        
+                        <ref bean="voldExtractClient" /> 
+                    </list>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- data del messaggio -->
+    <bean id="better-medicine-message-date"
+              class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+              p:target="div.posthead > span[class=postdate old] > span.date">
+        <property name="action">
+            <bean
+                class="it.stilo.uCrawler.actions.extraction.flexible.ExtractionPipeline"
+                p:actions-ref="better-medicine-message-date-actions" />
+        </property>
+    </bean>
+
+    <util:list id="better-medicine-message-date-actions">
+        <bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+                      p:toDo-ref="get-text" p:where-ref="put-to-date" />
+        <ref bean="put-to-screen" />
+    </util:list>
+
+    <!-- testo del messaggio -->
+    <bean id="better-medicine-message-text"
+              class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+              p:target="blockquote[class=postcontent restore]">
+        <property name="action">
+            <bean
+                class="it.stilo.uCrawler.actions.extraction.flexible.ExtractionPipeline"
+                p:actions-ref="better-medicine-message-text-actions" />
+        </property>
+    </bean>
+
+    <util:list id="better-medicine-message-text-actions">
+        <bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+                      p:toDo-ref="better-medicine-get-clean-text" p:where-ref="put-to-message" />
+        <ref bean="put-to-screen" />
+    </util:list>
+
+    <bean id="better-medicine-get-clean-text"
+              class="it.stilo.uCrawler.actions.extraction.flexible.GetCleanText"
+              p:toRemove="div.bbcode_container" />
+
+    <!-- id del messaggio -->
+    <bean id="better-medicine-post-id"
+              class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+              p:target="div.posthead > span[class=nodecontrols] > a[href]">
+        <property name="action">
+            <bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+                              p:toDo-ref="better-medicine-get-post-id" p:where-ref="put-to-post-id" />
+        </property>
+    </bean>
+
+    <bean id="better-medicine-get-post-id"
+              class="it.stilo.uCrawler.actions.extraction.flexible.GetHyperLink"
+              p:regex="(?&lt;=p=)\d+">
+    </bean>
+
+    <!-- utente che ha postato il messaggio -->
+    <bean id="better-medicine-message-username"
+              class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+              p:target="div.username_container a[class*=username] , div.username_container > span.username.guest">
+        <property name="action">
+            <bean
+                class="it.stilo.uCrawler.actions.extraction.flexible.ExtractionPipeline"
+                p:actions-ref="better-medicine-username-actions-list" />
+        </property>
+    </bean>
+
+    <util:list id="better-medicine-username-actions-list">
+        <bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+                      p:toDo-ref="get-text" p:where-ref="put-to-username" />
+        <ref bean="put-to-screen" />
+    </util:list>
+
+    <!-- id dell'utente -->
+    <bean id="better-medicine-user-id"
+              class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+              p:target="div[class=popupmenu memberaction] > a[href]">
+        <property name="action">
+            <bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+                              p:toDo-ref="better-medicine-get-user-id" p:where-ref="put-to-user-id" />
+        </property>
+    </bean>
+
+    <bean id="better-medicine-get-user-id"
+              class="it.stilo.uCrawler.actions.extraction.flexible.GetHyperLink"
+              p:regex="(?&lt;=/)\d+">
+    </bean>
+
+</beans>	

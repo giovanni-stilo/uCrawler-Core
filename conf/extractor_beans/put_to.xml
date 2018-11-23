@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<import resource="get_text.xml" />
+
+	<!-- forum -->
+	<bean id="put-to-thread-id"
+		class="it.stilo.uCrawler.actions.extraction.flexible.PutToField"
+		p:where="tid" />
+
+	<bean id="put-to-user-id"
+		class="it.stilo.uCrawler.actions.extraction.flexible.PutToField"
+		p:where="uid" />
+
+	<bean id="put-to-post-id"
+		class="it.stilo.uCrawler.actions.extraction.flexible.PutToField"
+		p:where="pid" />
+
+	<bean id="put-to-date"
+		class="it.stilo.uCrawler.actions.extraction.flexible.PutToField"
+		p:where="date" />
+
+	<bean id="put-to-message"
+		class="it.stilo.uCrawler.actions.extraction.flexible.PutToField"
+		p:where="message" />
+
+	<bean id="put-to-post-url"
+		class="it.stilo.uCrawler.actions.extraction.flexible.PutToField"
+		p:where="posturl" />
+
+	<bean id="put-to-username"
+		class="it.stilo.uCrawler.actions.extraction.flexible.PutToField"
+		p:where="username" />
+
+	<bean id="put-to-list-user-id"
+		class="it.stilo.uCrawler.actions.extraction.flexible.PutToListField"
+		p:where="messageList" p:fieldName="uid" />
+
+	<bean id="put-to-list-post-id"
+		class="it.stilo.uCrawler.actions.extraction.flexible.PutToListField"
+		p:where="messageList" p:fieldName="pid" />
+
+	<bean id="put-to-list-date"
+		class="it.stilo.uCrawler.actions.extraction.flexible.PutToListField"
+		p:where="messageList" p:fieldName="date" />
+
+	<bean id="put-to-list-message"
+		class="it.stilo.uCrawler.actions.extraction.flexible.PutToListField"
+		p:where="messageList" p:fieldName="message" />
+
+	<bean id="put-to-list-username"
+		class="it.stilo.uCrawler.actions.extraction.flexible.PutToListField"
+		p:where="messageList" p:fieldName="username" />
+
+	<bean id="put-to-list-post-url"
+		class="it.stilo.uCrawler.actions.extraction.flexible.PutToListField"
+		p:where="messageList" p:fieldName="posturl" />
+
+	<bean id="put-to-breadcrumb"
+		class="it.stilo.uCrawler.actions.extraction.flexible.PutToBreadCrumbUniq"
+		p:where="breadcrumb" />
+
+	<bean id="put-to-new-breadcrumb"
+		class="it.stilo.uCrawler.actions.extraction.flexible.PutToNewBreadCrumb"
+		p:where="breadcrumb" />
+
+	<bean id="put-to-screen"
+		class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+		p:toDo-ref="get-text">
+		<property name="where">
+			<bean class="it.stilo.uCrawler.actions.extraction.flexible.PutToScreen" />
+		</property>
+	</bean>
+
+	<!-- twubs -->
+	<bean id="put-to-category"
+		class="it.stilo.uCrawler.actions.extraction.flexible.PutToField"
+		p:where="category" />
+
+	<bean id="put-to-hashtag-category"
+		class="it.stilo.uCrawler.actions.extraction.flexible.PutToListField"
+		p:where="hashtagList" p:fieldName="categories" />
+
+	<bean id="put-html-to-screen"
+		class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+		p:toDo-ref="get-html-text">
+		<property name="where">
+			<bean class="it.stilo.uCrawler.actions.extraction.flexible.PutToScreen" />
+		</property>
+	</bean>
+
+</beans>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns:c="http://www.springframework.org/schema/c" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns="http://www.springframework.org/schema/beans" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+    <import resource="concurrent_fetcher.xml" />
+    <import resource="extractor_beans/hardware_upgrade.xml" />
+    <import resource="extractor_beans/health_forums.xml" />
+    <import resource="extractor_beans/pianeta_mamma.xml" />
+    <import resource="extractor_beans/better_medicine.xml" />
+    <import resource="extractor_beans/e_health.xml" />
+
+    <bean id="forum" class="it.stilo.uCrawler.crawler.Crawler"
+          p:manager-ref="urlsManager" p:fetcher-ref="concurrentFetcher"
+          p:sleepTime="500" />
+
+    <!-- pipeline di azioni -->
+    <bean id="pipeline" class="it.stilo.uCrawler.core.actions.PipelinedAction"
+          p:actions-ref="pipeline-actions" />
+
+    <util:list id="pipeline-actions">
+        <bean id="pipeline1" class="it.stilo.uCrawler.core.actions.PipelinedAction"
+              p:actions-ref="pipeline1-actions" />
+        <bean class="it.stilo.uCrawler.url.UrlManagerToActionAdapter" c:_0-ref="urlsManager"/>
+    </util:list>
+
+    <util:list id="pipeline1-actions">
+
+        <bean class="it.stilo.uCrawler.actions.UrlRegexBasedFilter"
+              c:_0-ref="hardware-upgrade-forum-extraction" p:regex=".*hwupgrade\.it.*$"
+              p:comply="true" />
+        
+        <bean class="it.stilo.uCrawler.actions.UrlRegexBasedFilter"
+              c:_0-ref="better-medicine-forum-extraction" p:regex=".*bettermedicine\.com.*$"
+              p:comply="true" />
+
+        <bean class="it.stilo.uCrawler.actions.UrlRegexBasedFilter"
+              c:_0-ref="health-forums-extraction" p:regex=".*health-forums\.org.*$"
+              p:comply="true" />
+
+        <bean class="it.stilo.uCrawler.actions.UrlRegexBasedFilter"
+              c:_0-ref="pianeta-mamma-forum-extraction" p:regex=".*pianetamamma\.it.*$"
+              p:comply="true" />
+   
+        <bean class="it.stilo.uCrawler.actions.UrlRegexBasedFilter"
+              c:_0-ref="e-health-forum-extraction" p:regex=".*ehealthforum\.com.*$"
+              p:comply="true" />
+
+    </util:list>
+
+    <!-- seed nell'UrlManager -->
+    <bean class="it.stilo.uCrawler.url.SeedsIgniter" c:_0-ref="urlsManager"
+          c:_1-ref="seeds" />
+
+    <bean id="urlsManager" class="it.stilo.uCrawler.url.URLManager">
+        <constructor-arg>
+            <bean class="it.stilo.uCrawler.url.datastructure.SimpleDataStructure"/>
+        </constructor-arg>
+    </bean>
+
+    <util:list id="seeds">
+        <!-- bettermedicine, sezione e discussione -->       
+        <!-- <bean class="java.net.URI" c:_0="http://forums.bettermedicine.com/forum.php" /> -->
+
+        <!-- hardware upgrade, sezione e discussione -->
+        <bean class="java.net.URI" c:_0="http://www.hwupgrade.it/forum/showthread.php?t=2576413" />
+        
+        <!-- altri forum -->
+        <!-- <bean class="java.net.URI" c:_0="http://forum.pianetamamma.it/forum.php" />  -->
+        <!-- <bean class="java.net.URI" c:_0="http://ehealthforum.com/health/health_forums.html" />  -->
+	
+        <!-- forum non più registrato 
+        <bean class="java.net.URI" c:_0="http://www.health-forums.org/" />  -->
+    </util:list>
+
+</beans>
