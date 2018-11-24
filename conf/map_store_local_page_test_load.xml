@@ -15,7 +15,7 @@
     <import resource="concurrent_fetcher.xml"/>
     <import resource="extractor_beans/hardware_upgrade.xml" />
     
-    <bean id="crawler" class="it.stilo.uCrawler.crawler.Crawler">
+    <bean id="crawler" class="it.stilo.ucrawler.crawler.Crawler">
         <property name="manager">
             <ref bean="urlsManager" />          
         </property>
@@ -28,27 +28,27 @@
                         
     </bean>
      
-    <bean id="pipeline" class="it.stilo.uCrawler.core.actions.PipelinedAction">
+    <bean id="pipeline" class="it.stilo.ucrawler.core.actions.PipelinedAction">
         <property name="actions">
             <list>
                 <ref bean="hardware-upgrade-forum-extraction" />       
-                <bean class ="it.stilo.uCrawler.actions.storage.mapdb.LocalStorageTestLoad">
+                <bean class ="it.stilo.ucrawler.actions.storage.mapdb.LocalStorageTestLoad">
                     <property name="dataDir" value="./storage/local/MapDB-LocalStoragePage" />
                     <property name="storeName" value="/CSI-LocalStoragePage" />
                     <property name="mapName" value="LocalStoragePage" />
                 </bean>                                               
-                <bean class="it.stilo.uCrawler.url.UrlManagerToActionAdapter" c:_0-ref="urlsManager"/>
+                <bean class="it.stilo.ucrawler.url.UrlManagerToActionAdapter" c:_0-ref="urlsManager"/>
             </list>
         </property>
     </bean>
 
-    <bean id="urlsManager" class="it.stilo.uCrawler.url.URLManager">
+    <bean id="urlsManager" class="it.stilo.ucrawler.url.URLManager">
         <constructor-arg>
-            <bean class="it.stilo.uCrawler.url.datastructure.SimpleDataStructure"/>
+            <bean class="it.stilo.ucrawler.url.datastructure.SimpleDataStructure"/>
         </constructor-arg>
     </bean>
     
-    <bean class="it.stilo.uCrawler.url.SeedsIgniter">
+    <bean class="it.stilo.ucrawler.url.SeedsIgniter">
         <constructor-arg>
             <ref bean="urlsManager"/>
         </constructor-arg>

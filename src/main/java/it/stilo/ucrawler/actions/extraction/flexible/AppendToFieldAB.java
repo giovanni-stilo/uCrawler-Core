@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.actions.extraction.flexible;
+package it.stilo.ucrawler.actions.extraction.flexible;
 
 /*
  * #%L
@@ -24,7 +24,7 @@ package it.stilo.uCrawler.actions.extraction.flexible;
 
 import java.util.Map;
 
-import it.stilo.uCrawler.page.Page;
+import it.stilo.ucrawler.page.Page;
 
 /**
  *

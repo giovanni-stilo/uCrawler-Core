@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.core.actions;
+package it.stilo.ucrawler.core.actions;
 
 /*
  * #%L

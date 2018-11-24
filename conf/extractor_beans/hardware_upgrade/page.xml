@@ -11,37 +11,37 @@
 
 	<!-- estrazione del breadcrumb -->
 	<bean id="hardware-upgrade-breadcrumb"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToAll"
 		p:target="span.navbar > a[href], td.navbar, div.navbar">
 		<property name="action">
-			<bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+			<bean class="it.stilo.ucrawler.actions.extraction.flexible.GetAndPut"
 				p:toDo-ref="get-text" p:where-ref="put-to-new-breadcrumb" />
 		</property>
 	</bean>
 
 	<!-- estrae i link alle sezioni del forum contenuti nella pagina -->
 	<bean id="hardware-upgrade-sections"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToAll"
 		p:target="table.tborder &gt; tbody &gt; tr &gt; td.tcat &gt; a:not([style]) , table.tborder &gt; tbody &gt; tr &gt; td.alt1Active &gt; table &gt; tbody &gt; tr &gt; td &gt; div:not([class]) &gt; a[href]"
 		p:action-ref="link-to-crawl" />
 
 	<!-- estrae i link alle discussioni contenuti nella pagina -->
 	<bean id="hardware-upgrade-threads"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToAll"
 		p:target="a[id*=thread_title_]" p:action-ref="link-to-crawl" />
 
 	<!-- id della discussione -->
 	<bean id="hardware-upgrade-thread-id"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToFirst"
 		p:target="td > table > tbody > tr > td.navbar > a[href]">
 		<property name="action">
-			<bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+			<bean class="it.stilo.ucrawler.actions.extraction.flexible.GetAndPut"
 				p:toDo-ref="hardware-upgrade-get-thread-id" p:where-ref="put-to-thread-id" />
 		</property>
 	</bean>
 
 	<bean id="hardware-upgrade-get-thread-id"
-		class="it.stilo.uCrawler.actions.extraction.flexible.GetHyperLink"
+		class="it.stilo.ucrawler.actions.extraction.flexible.GetHyperLink"
 		p:regex="(?&lt;=t=)\d+">
 	</bean>
 
@@ -51,7 +51,7 @@
 	<!-- usare "div.pagenav td.alt2 + td.alt1 &gt; a[href]" come target di RouteToFirst 
 		per evitare il problema -->
 	<bean id="hardware-upgrade-next"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToAll"
 		p:target="div.pagenav td.alt1 > a[href]" p:action-ref="link-to-crawl" />
 
 </beans>

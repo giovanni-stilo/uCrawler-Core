@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.actions.storage.voldemort;
+package it.stilo.ucrawler.actions.storage.voldemort;
 
 /*
  * #%L

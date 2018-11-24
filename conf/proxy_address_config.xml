@@ -11,7 +11,7 @@
     <!-- Oggetti ProxyAddress, racchiudono un indirizzo proxy e le credenziali di accesso.
             Popolano la lista di proxy descritta in concurrent_fetcher.xml
     -->
-    <bean id="proxy1" class="it.stilo.uCrawler.concurrentFetcher.proxy.ProxyAddress">
+    <bean id="proxy1" class="it.stilo.ucrawler.concurrentFetcher.proxy.ProxyAddress">
         <!-- Indirizzo e porta -->
         <property name="httpHost">
             <bean class="org.apache.http.HttpHost">
@@ -30,7 +30,7 @@
         <property name="proxyQualityThreshold" value="0.6f" />
     </bean>
 	
-    <bean id="proxy2" class="it.stilo.uCrawler.concurrentFetcher.proxy.ProxyAddress">
+    <bean id="proxy2" class="it.stilo.ucrawler.concurrentFetcher.proxy.ProxyAddress">
         <property name="httpHost">
             <!-- Indirizzo e porta -->
             <bean class="org.apache.http.HttpHost">

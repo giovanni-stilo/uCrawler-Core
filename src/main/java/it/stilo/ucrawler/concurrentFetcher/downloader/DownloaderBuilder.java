@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.concurrentFetcher.downloader;
+package it.stilo.ucrawler.concurrentFetcher.downloader;
 
 /*
  * #%L
@@ -22,7 +22,7 @@ package it.stilo.uCrawler.concurrentFetcher.downloader;
  * #L%
  */
 
-import it.stilo.uCrawler.concurrentFetcher.proxy.Proxy;
+import it.stilo.ucrawler.concurrentFetcher.proxy.Proxy;
 
 import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.log4j.Logger;

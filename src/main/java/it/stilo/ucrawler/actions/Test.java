@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.actions;
+package it.stilo.ucrawler.actions;
 
 /*
  * #%L
@@ -28,9 +28,9 @@ import java.util.HashMap;
 
 import org.apache.log4j.Logger;
 
-import it.stilo.uCrawler.core.actions.ActionIF;
-import it.stilo.uCrawler.core.actions.ActionsException;
-import it.stilo.uCrawler.page.Page;
+import it.stilo.ucrawler.core.actions.ActionIF;
+import it.stilo.ucrawler.core.actions.ActionsException;
+import it.stilo.ucrawler.page.Page;
 
 /**
  *
@@ -40,7 +40,7 @@ public class Test implements ActionIF {
 
 	@Override
 	public boolean doSomething(Page page) throws ActionsException {
-		HashMap ret = (HashMap)page.getFromContext(it.stilo.uCrawler.actions.extraction.flexible.PutToListField.class);
+		HashMap ret = (HashMap)page.getFromContext(it.stilo.ucrawler.actions.extraction.flexible.PutToListField.class);
 		
 		if (ret != null) {
 			ArrayList list = (ArrayList) ret.get("messageList");

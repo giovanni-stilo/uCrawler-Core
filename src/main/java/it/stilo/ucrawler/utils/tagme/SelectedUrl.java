@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.utils.tagme;
+package it.stilo.ucrawler.utils.tagme;
 
 /*
  * #%L
@@ -22,7 +22,7 @@ package it.stilo.uCrawler.utils.tagme;
  * #L%
  */
 
-import static it.stilo.uCrawler.utils.UrlEncoder.encode;
+import static it.stilo.ucrawler.utils.UrlEncoder.encode;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;

@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.actions.extraction.flexible.textops;
+package it.stilo.ucrawler.actions.extraction.flexible.textops;
 
 /*
  * #%L
@@ -22,7 +22,7 @@ package it.stilo.uCrawler.actions.extraction.flexible.textops;
  * #L%
  */
 
-import it.stilo.uCrawler.actions.extraction.flexible.ExtractionException;
+import it.stilo.ucrawler.actions.extraction.flexible.ExtractionException;
 
 /**
  *

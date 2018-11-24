@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.url.mapstore;
+package it.stilo.ucrawler.url.mapstore;
 
 /*
  * #%L

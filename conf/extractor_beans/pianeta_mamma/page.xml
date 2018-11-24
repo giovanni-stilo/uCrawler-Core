@@ -11,35 +11,35 @@
 
 	<!-- estrazione del breadcrumb -->
 	<bean id="pianeta-mamma-breadcrumb"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToAll"
 		p:target="div.breadcrumb > ul > li:not(.navbithome)">
 		<property name="action">
-			<bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+			<bean class="it.stilo.ucrawler.actions.extraction.flexible.GetAndPut"
 				p:toDo-ref="get-text" p:where-ref="put-to-new-breadcrumb" />
 		</property>
 	</bean>
 
 	<!-- estrae i link alle sezioni del forum contenuti nella pagina -->
 	<bean id="pianeta-mamma-sections"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToAll"
 		p:target="span.forumtitle > a[href] , h2.forumtitle > a[href]"
 		p:action-ref="link-to-crawl" />
 
 	<!-- estrae i link alle discussioni contenuti nella pagina -->
 	<bean id="pianeta-mamma-threads"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToAll"
 		p:target="h3.threadtitle > a[id*=thread_title_]" p:action-ref="link-to-crawl"/>
 
 	<!-- id della discussione -->
 	<bean id="pianeta-mamma-thread-id"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToFirst"
 		p:target="span.title-nav-showthread-inner > a[href]">
 		<property name="action">
-			<bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+			<bean class="it.stilo.ucrawler.actions.extraction.flexible.GetAndPut"
 				p:where-ref="put-to-thread-id">
 				<property name="toDo">
 					<bean
-						class="it.stilo.uCrawler.actions.extraction.flexible.GetHyperLink"
+						class="it.stilo.ucrawler.actions.extraction.flexible.GetHyperLink"
 						p:regex="(?&lt;=/)\d+">
 					</bean>
 				</property>
@@ -49,7 +49,7 @@
 
 	<!-- i link alla pagine della sezione/discussione -->
 	<bean id="pianeta-mamma-next"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToAll"
 		p:target="div.pagination_bottom span > a[href] , div.threadpagenav span > a[href]" p:action-ref="link-to-crawl" />
 
 </beans>

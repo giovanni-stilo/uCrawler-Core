@@ -6,42 +6,42 @@
     <import resource="get_text.xml" />
 
     <bean id="put-to-thread-id"
-              class="it.stilo.uCrawler.actions.extraction.flexible.PutToField"
+              class="it.stilo.ucrawler.actions.extraction.flexible.PutToField"
               p:where="tid" />
 
     <bean id="put-to-user-id"
-              class="it.stilo.uCrawler.actions.extraction.flexible.PutToField"
+              class="it.stilo.ucrawler.actions.extraction.flexible.PutToField"
               p:where="uid" />
 	
     <bean id="put-to-post-id"
-              class="it.stilo.uCrawler.actions.extraction.flexible.PutToField"
+              class="it.stilo.ucrawler.actions.extraction.flexible.PutToField"
               p:where="pid" />
 
     <bean id="put-to-date"
-              class="it.stilo.uCrawler.actions.extraction.flexible.PutToField"
+              class="it.stilo.ucrawler.actions.extraction.flexible.PutToField"
               p:where="date" />
 
     <bean id="put-to-message"
-              class="it.stilo.uCrawler.actions.extraction.flexible.PutToField"
+              class="it.stilo.ucrawler.actions.extraction.flexible.PutToField"
               p:where="message" />
 
     <bean id="put-to-username"
-              class="it.stilo.uCrawler.actions.extraction.flexible.PutToField"
+              class="it.stilo.ucrawler.actions.extraction.flexible.PutToField"
               p:where="username" />
 
     <bean id="put-to-breadcrumb"
-              class="it.stilo.uCrawler.actions.extraction.flexible.PutToBreadCrumbUniq"
+              class="it.stilo.ucrawler.actions.extraction.flexible.PutToBreadCrumbUniq"
               p:where="breadcrumb" />
 
     <bean id="put-to-new-breadcrumb"
-              class="it.stilo.uCrawler.actions.extraction.flexible.PutToNewBreadCrumb"
+              class="it.stilo.ucrawler.actions.extraction.flexible.PutToNewBreadCrumb"
               p:where="breadcrumb" />
 
     <bean id="put-to-screen"
-              class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+              class="it.stilo.ucrawler.actions.extraction.flexible.GetAndPut"
               p:toDo-ref="get-text">
         <property name="where">
-            <bean class="it.stilo.uCrawler.actions.extraction.flexible.PutToScreen" />
+            <bean class="it.stilo.ucrawler.actions.extraction.flexible.PutToScreen" />
         </property>
     </bean>
 

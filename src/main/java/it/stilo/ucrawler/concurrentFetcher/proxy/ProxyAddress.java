@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.concurrentFetcher.proxy;
+package it.stilo.ucrawler.concurrentFetcher.proxy;
 
 /*
  * #%L

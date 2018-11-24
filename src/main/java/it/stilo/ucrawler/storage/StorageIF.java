@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.storage;
+package it.stilo.ucrawler.storage;
 
 /*
  * #%L
@@ -22,7 +22,7 @@ package it.stilo.uCrawler.storage;
  * #L%
  */
 
-import it.stilo.uCrawler.page.Page;
+import it.stilo.ucrawler.page.Page;
 import java.net.URI;
 import java.util.Iterator;
 

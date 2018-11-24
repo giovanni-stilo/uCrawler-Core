@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.crawler;
+package it.stilo.ucrawler.crawler;
 
 /*
  * #%L
@@ -22,10 +22,10 @@ package it.stilo.uCrawler.crawler;
  * #L%
  */
 
-import it.stilo.uCrawler.cache.CacheProcessorRunner;
-import it.stilo.uCrawler.fetcher.FetcherAB;
-import it.stilo.uCrawler.page.Page;
-import it.stilo.uCrawler.url.URLManagerIF;
+import it.stilo.ucrawler.cache.CacheProcessorRunner;
+import it.stilo.ucrawler.fetcher.FetcherAB;
+import it.stilo.ucrawler.page.Page;
+import it.stilo.ucrawler.url.URLManagerIF;
 
 import org.apache.log4j.Logger;
 

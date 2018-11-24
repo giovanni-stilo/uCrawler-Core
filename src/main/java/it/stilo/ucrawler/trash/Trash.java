@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.trash;
+package it.stilo.ucrawler.trash;
 
 /*
  * #%L

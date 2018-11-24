@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.url.datastructure;
+package it.stilo.ucrawler.url.datastructure;
 
 /*
  * #%L
@@ -22,7 +22,7 @@ package it.stilo.uCrawler.url.datastructure;
  * #L%
  */
 
-import it.stilo.uCrawler.page.Page;
+import it.stilo.ucrawler.page.Page;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 

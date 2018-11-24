@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.url;
+package it.stilo.ucrawler.url;
 
 /*
  * #%L
@@ -22,7 +22,7 @@ package it.stilo.uCrawler.url;
  * #L%
  */
 
-import it.stilo.uCrawler.page.Page;
+import it.stilo.ucrawler.page.Page;
 import java.net.URI;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.url.datastructure;
+package it.stilo.ucrawler.url.datastructure;
 
 /*
  * #%L
@@ -22,7 +22,7 @@ package it.stilo.uCrawler.url.datastructure;
  * #L%
  */
 
-import it.stilo.uCrawler.page.TinyCrawlable;
+import it.stilo.ucrawler.page.TinyCrawlable;
 import com.hazelcast.core.DistributedObject;
 import com.hazelcast.core.DistributedObjectEvent;
 import com.hazelcast.core.DistributedObjectListener;
@@ -30,7 +30,7 @@ import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.Member;
 import com.hazelcast.core.Message;
 import com.hazelcast.core.MessageListener;
-import it.stilo.uCrawler.page.Page;
+import it.stilo.ucrawler.page.Page;
 import java.net.URISyntaxException;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentMap;

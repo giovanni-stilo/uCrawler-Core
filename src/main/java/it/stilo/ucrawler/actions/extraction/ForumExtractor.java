@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.actions.extraction;
+package it.stilo.ucrawler.actions.extraction;
 
 /*
  * #%L
@@ -38,9 +38,9 @@ import org.jsoup.select.Elements;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
-import it.stilo.uCrawler.core.actions.ActionsException;
-import it.stilo.uCrawler.crawler.Crawler;
-import it.stilo.uCrawler.page.Page;
+import it.stilo.ucrawler.core.actions.ActionsException;
+import it.stilo.ucrawler.crawler.Crawler;
+import it.stilo.ucrawler.page.Page;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -168,7 +168,7 @@ public class ForumExtractor extends DataExtractor {
 	 * 
 	 * @param config
 	 *            un oggetto della classe
-	 *            {@link it.stilo.uCrawler.actions.extraction.ForumConfig}
+	 *            {@link it.stilo.ucrawler.actions.extraction.ForumConfig}
 	 */
 	public void setConfig(ForumConfig config) {
 		this.config = config;

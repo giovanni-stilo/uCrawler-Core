@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.actions.extraction.flexible;
+package it.stilo.ucrawler.actions.extraction.flexible;
 
 /*
  * #%L
@@ -25,7 +25,7 @@ package it.stilo.uCrawler.actions.extraction.flexible;
 import org.jsoup.nodes.Element;
 import org.springframework.beans.factory.annotation.Required;
 
-import it.stilo.uCrawler.page.Page;
+import it.stilo.ucrawler.page.Page;
 
 /**
  *

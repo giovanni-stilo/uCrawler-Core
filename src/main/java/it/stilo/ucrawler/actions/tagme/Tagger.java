@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.actions.tagme;
+package it.stilo.ucrawler.actions.tagme;
 
 /*
  * #%L
@@ -27,9 +27,9 @@ import it.acubelab.tagme.Annotation;
 import it.acubelab.tagme.TagmeParser;
 import it.acubelab.tagme.config.TagmeConfig;
 import it.acubelab.tagme.preprocessing.TopicSearcher;*/
-import it.stilo.uCrawler.core.actions.ActionIF;
-import it.stilo.uCrawler.core.actions.ActionsException;
-import it.stilo.uCrawler.page.Page;
+import it.stilo.ucrawler.core.actions.ActionIF;
+import it.stilo.ucrawler.core.actions.ActionsException;
+import it.stilo.ucrawler.page.Page;
 import org.jsoup.nodes.Document;
 
 /**

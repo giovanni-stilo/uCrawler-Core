@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.concurrentFetcher.proxy;
+package it.stilo.ucrawler.concurrentFetcher.proxy;
 
 /*
  * #%L
@@ -22,10 +22,10 @@ package it.stilo.uCrawler.concurrentFetcher.proxy;
  * #L%
  */
 
-import it.stilo.uCrawler.concurrentFetcher.downloader.Downloader;
-import it.stilo.uCrawler.concurrentFetcher.downloader.DownloaderBuilderAB;
-import it.stilo.uCrawler.page.Page;
-import it.stilo.uCrawler.utils.NamedConcurrentLinkedQueue;
+import it.stilo.ucrawler.concurrentFetcher.downloader.Downloader;
+import it.stilo.ucrawler.concurrentFetcher.downloader.DownloaderBuilderAB;
+import it.stilo.ucrawler.page.Page;
+import it.stilo.ucrawler.utils.NamedConcurrentLinkedQueue;
 
 import java.util.HashMap;
 import java.util.Map;

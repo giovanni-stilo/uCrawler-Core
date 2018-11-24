@@ -8,11 +8,11 @@
 	<import resource="../put_to.xml" />
 
 	<bean id="pianeta-mamma-messages"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToAll"
 		p:target="li.postbitlegacy.postbitim.postcontainer">
 		<property name="action">
 			<bean
-				class="it.stilo.uCrawler.actions.extraction.flexible.ExtractionPipeline">
+				class="it.stilo.ucrawler.actions.extraction.flexible.ExtractionPipeline">
 				<property name="actions">
 					<list>
 						<ref bean="pianeta-mamma-message-date" />
@@ -28,84 +28,84 @@
 
 	<!-- data del messaggio -->
 	<bean id="pianeta-mamma-message-date"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToFirst"
 		p:target="span.date">
 		<property name="action">
 			<bean
-				class="it.stilo.uCrawler.actions.extraction.flexible.ExtractionPipeline"
+				class="it.stilo.ucrawler.actions.extraction.flexible.ExtractionPipeline"
 				p:actions-ref="pianeta-mamma-message-date-actions" />
 		</property>
 	</bean>
 
 	<util:list id="pianeta-mamma-message-date-actions">
-		<bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+		<bean class="it.stilo.ucrawler.actions.extraction.flexible.GetAndPut"
 			p:toDo-ref="get-text" p:where-ref="put-to-list-date" />
 		<ref bean="put-to-screen" />
 	</util:list>
 
 	<!-- testo del messaggio -->
 	<bean id="pianeta-mamma-message-text"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToFirst"
 		p:target="div[id*=post_message]">
 		<property name="action">
 			<bean
-				class="it.stilo.uCrawler.actions.extraction.flexible.ExtractionPipeline"
+				class="it.stilo.ucrawler.actions.extraction.flexible.ExtractionPipeline"
 				p:actions-ref="pianeta-mamma-message-text-actions" />
 		</property>
 	</bean>
 
 	<util:list id="pianeta-mamma-message-text-actions">
-		<bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+		<bean class="it.stilo.ucrawler.actions.extraction.flexible.GetAndPut"
 			p:toDo-ref="pianeta-mamma-get-clean-text" p:where-ref="put-to-list-message" />
 		<ref bean="put-to-screen" />
 	</util:list>
 
 	<bean id="pianeta-mamma-get-clean-text"
-		class="it.stilo.uCrawler.actions.extraction.flexible.GetCleanText"
+		class="it.stilo.ucrawler.actions.extraction.flexible.GetCleanText"
 		p:toRemove="div.bbcode_quote" />
 
 	<!-- id del messaggio -->
 	<bean id="pianeta-mamma-post-id"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToFirst"
 		p:target="li.postbitlegacy.postbitim.postcontainer">
 		<property name="action">
-			<bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+			<bean class="it.stilo.ucrawler.actions.extraction.flexible.GetAndPut"
 				p:toDo-ref="pianeta-mamma-get-post-id" p:where-ref="put-to-list-post-id" />
 		</property>
 	</bean>
 
-	<bean id="pianeta-mamma-get-post-id" class="it.stilo.uCrawler.actions.extraction.flexible.GetId"
+	<bean id="pianeta-mamma-get-post-id" class="it.stilo.ucrawler.actions.extraction.flexible.GetId"
 		p:regex="(?&lt;=post_)\d+">
 	</bean>
 
 	<!-- utente che ha postato il messaggio -->
 	<bean id="pianeta-mamma-message-username"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToFirst"
 		p:target="div.popupmenu.memberaction , span.username.guest">
 		<property name="action">
 			<bean
-				class="it.stilo.uCrawler.actions.extraction.flexible.ExtractionPipeline"
+				class="it.stilo.ucrawler.actions.extraction.flexible.ExtractionPipeline"
 				p:actions-ref="pianeta-mamma-username-actions-list" />
 		</property>
 	</bean>
 
 	<util:list id="pianeta-mamma-username-actions-list">
-		<bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+		<bean class="it.stilo.ucrawler.actions.extraction.flexible.GetAndPut"
 			p:toDo-ref="get-text" p:where-ref="put-to-list-username" />
 		<ref bean="put-to-screen" />
 	</util:list>
 
 	<bean id="pianeta-mamma-post-url"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToFirst"
 		p:target="div.posthead > span.nodecontrols > a[href]">
 		<property name="action">
-			<bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+			<bean class="it.stilo.ucrawler.actions.extraction.flexible.GetAndPut"
 				p:toDo-ref="pianeta-mamma-get-post-url" p:where-ref="put-to-list-post-url" />
 		</property>
 	</bean>
 
 	<bean id="pianeta-mamma-get-post-url"
-		class="it.stilo.uCrawler.actions.extraction.flexible.GetHyperLink">
+		class="it.stilo.ucrawler.actions.extraction.flexible.GetHyperLink">
 	</bean>
 	
 </beans>	

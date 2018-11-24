@@ -9,10 +9,10 @@
     <import resource="e_health/messages.xml" />
 
     <bean id="e-health-forum-extraction"
-              class="it.stilo.uCrawler.actions.extraction.flexible.ActionToExtraction">
+              class="it.stilo.ucrawler.actions.extraction.flexible.ActionToExtraction">
         <property name="action">
             <bean
-                class="it.stilo.uCrawler.actions.extraction.flexible.ExtractionPipeline">
+                class="it.stilo.ucrawler.actions.extraction.flexible.ExtractionPipeline">
                 <property name="actions">
                     <list>
                         <ref bean="e-health-breadcrumb" />

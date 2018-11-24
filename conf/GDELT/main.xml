@@ -14,10 +14,10 @@
         
     <import resource="concurrent_fetcher.xml"/>
 	
-    <bean id="crawler" class="it.stilo.uCrawler.crawler.Crawler" p:manager-ref="urlsManager" p:fetcher-ref="cachedFetcher" p:sleepTime="500" />
+    <bean id="crawler" class="it.stilo.ucrawler.crawler.Crawler" p:manager-ref="urlsManager" p:fetcher-ref="cachedFetcher" p:sleepTime="500" />
 
 	
-    <bean id="cachedFetcher" class="it.stilo.uCrawler.actions.storage.CachedFetcher">
+    <bean id="cachedFetcher" class="it.stilo.ucrawler.actions.storage.CachedFetcher">
         <constructor-arg>
             <ref bean="concurrentFetcher" />
         </constructor-arg>
@@ -31,24 +31,24 @@
         </property>
     </bean>
 
-    <bean id="pipeline" class="it.stilo.uCrawler.core.actions.PipelinedAction">
+    <bean id="pipeline" class="it.stilo.ucrawler.core.actions.PipelinedAction">
         <property name="actions">
             <list>
                 <ref bean="save" />
-                <bean class="it.stilo.uCrawler.url.UrlManagerToActionAdapter" c:_0-ref="urlsManager" />
+                <bean class="it.stilo.ucrawler.url.UrlManagerToActionAdapter" c:_0-ref="urlsManager" />
             </list>
         </property>
     </bean>
 
     <bean id="load"
-          class="it.stilo.uCrawler.actions.storage.mapdb.LocalStorageLoad">
+          class="it.stilo.ucrawler.actions.storage.mapdb.LocalStorageLoad">
         <constructor-arg>
             <ref bean="physical" />
         </constructor-arg>
         <property name="mapName" value="pages" />
     </bean>
 
-    <bean id="save" class="it.stilo.uCrawler.actions.storage.mapdb.LocalStorage">
+    <bean id="save" class="it.stilo.ucrawler.actions.storage.mapdb.LocalStorage">
         <constructor-arg>
             <ref bean="physical" />
         </constructor-arg>
@@ -56,21 +56,21 @@
         <property name="compressTime" value="50" />
     </bean>
 
-    <bean id="physical" class="it.stilo.uCrawler.actions.storage.mapdb.MapDBInstance"
+    <bean id="physical" class="it.stilo.ucrawler.actions.storage.mapdb.MapDBInstance"
           destroy-method="destroy">
         <property name="dataDir" value="./storage/GDELT_1" />
         <property name="storeName" value="/GDELT" />
     </bean>
     
-<!--    <bean id="lazyIgnitier" class="it.stilo.uCrawler.url.LazySeedsIgniter" c:_0-ref="urlsManager"	c:_1="conf/GDELT/jul-aug-2014.gz"
+<!--    <bean id="lazyIgnitier" class="it.stilo.ucrawler.url.LazySeedsIgniter" c:_0-ref="urlsManager"	c:_1="conf/GDELT/jul-aug-2014.gz"
           p:timeSlot="1000"  p:size="17000"  p:firstLoad="500000" destroy-method="interrupt" init-method="start"/>-->
     
-    <bean class="it.stilo.uCrawler.url.SeedsFromFile" c:_0-ref="urlsManager"
+    <bean class="it.stilo.ucrawler.url.SeedsFromFile" c:_0-ref="urlsManager"
 		c:_1="conf/GDELT/fewURL" />
 		
-    <bean id="urlsManager" class="it.stilo.uCrawler.url.URLManager">
+    <bean id="urlsManager" class="it.stilo.ucrawler.url.URLManager">
         <constructor-arg>
-            <bean class="it.stilo.uCrawler.url.datastructure.MapDBDataStructure" init-method="init" />
+            <bean class="it.stilo.ucrawler.url.datastructure.MapDBDataStructure" init-method="init" />
         </constructor-arg>
     </bean>
     

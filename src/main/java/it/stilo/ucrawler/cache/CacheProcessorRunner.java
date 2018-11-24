@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.cache;
+package it.stilo.ucrawler.cache;
 
 /*
  * #%L
@@ -22,7 +22,7 @@ package it.stilo.uCrawler.cache;
  * #L%
  */
 
-import it.stilo.uCrawler.core.actions.ActionsException;
+import it.stilo.ucrawler.core.actions.ActionsException;
 
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;

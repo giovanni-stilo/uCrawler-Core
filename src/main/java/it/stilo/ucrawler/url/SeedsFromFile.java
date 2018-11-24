@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.url;
+package it.stilo.ucrawler.url;
 
 /*
  * #%L
@@ -23,7 +23,7 @@ package it.stilo.uCrawler.url;
  */
 
 
-import it.stilo.uCrawler.page.Page;
+import it.stilo.ucrawler.page.Page;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;

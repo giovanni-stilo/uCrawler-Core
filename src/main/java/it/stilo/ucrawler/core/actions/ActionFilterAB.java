@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.core.actions;
+package it.stilo.ucrawler.core.actions;
 
 /*
  * #%L
@@ -22,7 +22,7 @@ package it.stilo.uCrawler.core.actions;
  * #L%
  */
 
-import it.stilo.uCrawler.page.Page;
+import it.stilo.ucrawler.page.Page;
 
 /**
  *

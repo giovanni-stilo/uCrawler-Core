@@ -9,7 +9,7 @@
 
     <context:annotation-config/>
     	
-    <bean id="fetcher" class="it.stilo.uCrawler.fetcher.Fetcher">
+    <bean id="fetcher" class="it.stilo.ucrawler.fetcher.Fetcher">
         <property name="action">
             <ref bean="pipeline" />
         </property>
@@ -29,12 +29,12 @@
             <ref bean="userAgentHandler" />
         </property>
         <property name="robotHandler">
-            <bean id="robotHandler" class="it.stilo.uCrawler.fetcher.robotFile.RobotFileHandler">
+            <bean id="robotHandler" class="it.stilo.ucrawler.fetcher.robotFile.RobotFileHandler">
             </bean>
         </property>
     </bean>
 	
-    <bean id="userAgentHandler" class="it.stilo.uCrawler.fetcher.fetcherTask.UserAgentHandler">
+    <bean id="userAgentHandler" class="it.stilo.ucrawler.fetcher.fetcherTask.UserAgentHandler">
         <property name="userAgentFilePath" value="src/main/resources/useragent"/>
         <property name="defaultUserAgent" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:23.0) Gecko/20100101 Firefox/23.0"/>
     </bean>

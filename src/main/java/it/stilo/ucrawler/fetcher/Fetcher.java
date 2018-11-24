@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.fetcher;
+package it.stilo.ucrawler.fetcher;
 
 /*
  * #%L
@@ -22,11 +22,11 @@ package it.stilo.uCrawler.fetcher;
  * #L%
  */
 
-import it.stilo.uCrawler.fetcher.fetcherTask.Downloader;
-import it.stilo.uCrawler.fetcher.fetcherTask.IdleConnectionMonitorThread;
-import it.stilo.uCrawler.fetcher.fetcherTask.UserAgentHandler;
-import it.stilo.uCrawler.fetcher.robotFile.RobotFileHandler;
-import it.stilo.uCrawler.page.Page;
+import it.stilo.ucrawler.fetcher.fetcherTask.Downloader;
+import it.stilo.ucrawler.fetcher.fetcherTask.IdleConnectionMonitorThread;
+import it.stilo.ucrawler.fetcher.fetcherTask.UserAgentHandler;
+import it.stilo.ucrawler.fetcher.robotFile.RobotFileHandler;
+import it.stilo.ucrawler.page.Page;
 
 import java.util.ArrayList;
 import java.util.List;

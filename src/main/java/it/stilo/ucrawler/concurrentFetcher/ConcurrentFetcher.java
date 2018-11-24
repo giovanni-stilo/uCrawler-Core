@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.concurrentFetcher;
+package it.stilo.ucrawler.concurrentFetcher;
 
 /*
  * #%L
@@ -22,14 +22,14 @@ package it.stilo.uCrawler.concurrentFetcher;
  * #L%
  */
 
-import it.stilo.uCrawler.concurrentFetcher.downloader.DownloaderBuilderAB;
-import it.stilo.uCrawler.concurrentFetcher.proxy.Proxy;
-import it.stilo.uCrawler.concurrentFetcher.proxy.ProxyAddress;
-import it.stilo.uCrawler.concurrentFetcher.proxy.ProxyAddressProviderIF;
-import it.stilo.uCrawler.fetcher.FetcherAB;
-import it.stilo.uCrawler.fetcher.fetcherTask.IdleConnectionMonitorThread;
-import it.stilo.uCrawler.fetcher.robotFile.RobotFileHandler;
-import it.stilo.uCrawler.page.Page;
+import it.stilo.ucrawler.concurrentFetcher.downloader.DownloaderBuilderAB;
+import it.stilo.ucrawler.concurrentFetcher.proxy.Proxy;
+import it.stilo.ucrawler.concurrentFetcher.proxy.ProxyAddress;
+import it.stilo.ucrawler.concurrentFetcher.proxy.ProxyAddressProviderIF;
+import it.stilo.ucrawler.fetcher.FetcherAB;
+import it.stilo.ucrawler.fetcher.fetcherTask.IdleConnectionMonitorThread;
+import it.stilo.ucrawler.fetcher.robotFile.RobotFileHandler;
+import it.stilo.ucrawler.page.Page;
 
 import java.util.ArrayList;
 import java.util.List;

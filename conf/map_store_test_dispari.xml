@@ -12,9 +12,9 @@
     
     <import resource="cluster_bean.xml"/>
 	
-    <bean id="mapStore" class="it.stilo.uCrawler.url.mapstore.test.MapStoreTest">
+    <bean id="mapStore" class="it.stilo.ucrawler.url.mapstore.test.MapStoreTest">
         <property name="objectManager">
-            <bean class="it.stilo.uCrawler.url.mapstore.test.Dispari">
+            <bean class="it.stilo.ucrawler.url.mapstore.test.Dispari">
                 <constructor-arg>
                     <ref bean="instance"/>
                 </constructor-arg>

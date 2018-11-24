@@ -9,7 +9,7 @@
 	<import resource="extractor_beans/link_to_crawl.xml" />
 	<import resource="extractor_beans/put_to.xml" />
 
-	<bean id="cachedFetcher" class="it.stilo.uCrawler.actions.storage.CachedFetcher">
+	<bean id="cachedFetcher" class="it.stilo.ucrawler.actions.storage.CachedFetcher">
 		<constructor-arg>
 			<ref bean="concurrentFetcher" />
 		</constructor-arg>
@@ -23,46 +23,46 @@
 		</property>
 	</bean>
 
-	<bean id="crawler" class="it.stilo.uCrawler.crawler.Crawler"
+	<bean id="crawler" class="it.stilo.ucrawler.crawler.Crawler"
 		p:manager-ref="urlsManager" p:fetcher-ref="cachedFetcher" p:sleepTime="500" />
 
 	<!-- pipeline di azioni -->
-	<bean id="pipeline" class="it.stilo.uCrawler.core.actions.PipelinedAction"
+	<bean id="pipeline" class="it.stilo.ucrawler.core.actions.PipelinedAction"
 		p:actions-ref="pipeline-actions" />
 
 	<util:list id="pipeline-actions">
-		<bean class="it.stilo.uCrawler.core.actions.PipelinedAction">
+		<bean class="it.stilo.ucrawler.core.actions.PipelinedAction">
 			<property name="actions">
 				<list>
 					<bean
-						class="it.stilo.uCrawler.actions.extraction.flexible.ActionToExtraction">
+						class="it.stilo.ucrawler.actions.extraction.flexible.ActionToExtraction">
 						<property name="action">
 							<bean
-								class="it.stilo.uCrawler.actions.extraction.flexible.ExtractionPipeline">
+								class="it.stilo.ucrawler.actions.extraction.flexible.ExtractionPipeline">
 								<property name="actions">
 									<list>
 										<!-- pages -->
 										<bean
-											class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+											class="it.stilo.ucrawler.actions.extraction.flexible.RouteToAll"
 											p:target="div[class=pagination-container] li > a[href]"
 											p:action-ref="link-to-crawl" />
 										<!-- main and sub category array -->
 										<bean
-											class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+											class="it.stilo.ucrawler.actions.extraction.flexible.RouteToFirst"
 											p:target="script:not([type])">
 											<property name="action">
 												<bean
-													class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+													class="it.stilo.ucrawler.actions.extraction.flexible.GetAndPut"
 													p:toDo-ref="get-html-text" p:where-ref="put-to-category">
 												</bean>
 											</property>
 										</bean>
 										<!-- hashtags -->
 										<bean
-											class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+											class="it.stilo.ucrawler.actions.extraction.flexible.RouteToAll"
 											p:target="li > a[class=hash-tab clearfix no-hijax] > p"
 											p:action-ref="hashtag-action" />
-										<!-- hashtag links <bean class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll" 
+										<!-- hashtag links <bean class="it.stilo.ucrawler.actions.extraction.flexible.RouteToAll" 
 											p:target="li > a[class=hash-tab clearfix no-hijax]" p:action-ref="link-to-crawl" 
 											/> -->
 									</list>
@@ -74,20 +74,20 @@
 			</property>
 		</bean>
 		<ref bean="hashtag-save" />
-		<bean class="it.stilo.uCrawler.actions.ContextListToJson"
+		<bean class="it.stilo.ucrawler.actions.ContextListToJson"
 			p:producerObject-ref="put-to-hashtag-category" p:filename="twubs.json" />
-		<bean class="it.stilo.uCrawler.url.UrlManagerToActionAdapter"
+		<bean class="it.stilo.ucrawler.url.UrlManagerToActionAdapter"
 			c:_0-ref="urlsManager" />
 	</util:list>
 	
 	<bean id="hashtag-action"
-		class="it.stilo.uCrawler.actions.extraction.flexible.ExtractionPipeline">
+		class="it.stilo.ucrawler.actions.extraction.flexible.ExtractionPipeline">
 		<property name="actions">
 			<list>
-				<bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut">
+				<bean class="it.stilo.ucrawler.actions.extraction.flexible.GetAndPut">
 					<property name="toDo">
 						<bean
-							class="it.stilo.uCrawler.actions.extraction.flexible.GetFromContextField">
+							class="it.stilo.ucrawler.actions.extraction.flexible.GetFromContextField">
 							<property name="producerObject">
 								<ref bean="put-to-category" />
 							</property>
@@ -97,11 +97,11 @@
 						<ref bean="put-to-hashtag-category" />
 					</property>
 				</bean>
-				<bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+				<bean class="it.stilo.ucrawler.actions.extraction.flexible.GetAndPut"
 					p:toDo-ref="get-text">
 					<property name="where">
 						<bean
-							class="it.stilo.uCrawler.actions.extraction.flexible.PutToListField"
+							class="it.stilo.ucrawler.actions.extraction.flexible.PutToListField"
 							p:where="hashtagList" p:fieldName="hashtag" />
 					</property>
 				</bean>
@@ -111,14 +111,14 @@
 	</bean>
 
 	<bean id="hashtag-load"
-		class="it.stilo.uCrawler.actions.storage.mapdb.LocalStorageLoad">
+		class="it.stilo.ucrawler.actions.storage.mapdb.LocalStorageLoad">
 		<constructor-arg>
 			<ref bean="map-hashtag" />
 		</constructor-arg>
 		<property name="mapName" value="pages" />
 	</bean>
 
-	<bean id="hashtag-save" class="it.stilo.uCrawler.actions.storage.mapdb.LocalStorage">
+	<bean id="hashtag-save" class="it.stilo.ucrawler.actions.storage.mapdb.LocalStorage">
 		<constructor-arg>
 			<ref bean="map-hashtag" />
 		</constructor-arg>
@@ -126,19 +126,19 @@
 		<property name="compressTime" value="50" />
 	</bean>
 
-	<bean id="map-hashtag" class="it.stilo.uCrawler.actions.storage.mapdb.MapDBInstance"
+	<bean id="map-hashtag" class="it.stilo.ucrawler.actions.storage.mapdb.MapDBInstance"
 		destroy-method="destroy">
 		<property name="dataDir" value="./storage/local/twubs.com" />
 		<property name="storeName" value="/twubs" />
 	</bean>
 
-	<bean id="urlsManager" class="it.stilo.uCrawler.url.URLManager">
+	<bean id="urlsManager" class="it.stilo.ucrawler.url.URLManager">
 		<constructor-arg>
-			<bean class="it.stilo.uCrawler.url.datastructure.SimpleDataStructure" />
+			<bean class="it.stilo.ucrawler.url.datastructure.SimpleDataStructure" />
 		</constructor-arg>
 	</bean>
 
-	<bean class="it.stilo.uCrawler.url.SeedsFromFile" c:_0-ref="urlsManager"
+	<bean class="it.stilo.ucrawler.url.SeedsFromFile" c:_0-ref="urlsManager"
 		c:_1="conf/twubs/seeds-hashtag-orig.txt" />
 
 </beans>

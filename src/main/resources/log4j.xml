@@ -122,17 +122,17 @@
         <appender-ref ref="console" /> 
     </logger>
  
-    <logger name="it.stilo.uCrawler.actions.extraction.flexible.PutToScreen" additivity="false">
+    <logger name="it.stilo.ucrawler.actions.extraction.flexible.PutToScreen" additivity="false">
         <level value="INFO" /> 
         <appender-ref ref="dataScreen"/>
     </logger>
     
-    <logger name="it.stilo.uCrawler.fetcher" additivity="false">
+    <logger name="it.stilo.ucrawler.fetcher" additivity="false">
         <level value="INFO" /> 
         <appender-ref ref="fetcherFile"/>
     </logger>
     
-     <logger name="it.stilo.uCrawler.concurrentFetcher" additivity="false">
+     <logger name="it.stilo.ucrawler.concurrentFetcher" additivity="false">
          
         <appender-ref ref="concurrentFetcher"/>
     </logger>
@@ -144,37 +144,37 @@
     
     
     
-    <logger name="it.stilo.uCrawler.actions.extraction.flexible.PutToNewBreadCrumb" additivity="false">
+    <logger name="it.stilo.ucrawler.actions.extraction.flexible.PutToNewBreadCrumb" additivity="false">
         <level value="INFO" /> 
         <appender-ref ref="dataBreadcrumbScreen"/>
     </logger>
     
-    <logger name="it.stilo.uCrawler.url" additivity="false">
+    <logger name="it.stilo.ucrawler.url" additivity="false">
         <level value="INFO" /> 
         <appender-ref ref="distUrl"/>
     </logger>
     
-    <logger name="it.stilo.uCrawler.actions.storage" additivity="false">
+    <logger name="it.stilo.ucrawler.actions.storage" additivity="false">
         <level value="INFO" /> 
         <appender-ref ref="cachedStorage"/>
     </logger>
     
-    <logger name="it.stilo.uCrawler.actions.storage.voldemort" additivity="false">
+    <logger name="it.stilo.ucrawler.actions.storage.voldemort" additivity="false">
         <level value="INFO" /> 
         <appender-ref ref="voldemort"/>
     </logger>
     
-    <logger name="it.stilo.uCrawler.actions.storage.mapdb" additivity="false">
+    <logger name="it.stilo.ucrawler.actions.storage.mapdb" additivity="false">
         <level value="INFO" /> 
         <appender-ref ref="localPage"/>
     </logger>
     
-    <logger name="it.stilo.uCrawler.url.mapstore.test" additivity="false">
+    <logger name="it.stilo.ucrawler.url.mapstore.test" additivity="false">
         <level value="INFO" /> 
         <appender-ref ref="testOddAndEven"/>
     </logger>
        
-    <logger name="it.stilo.uCrawler.policies.RegexUrlCleaner" additivity="false">
+    <logger name="it.stilo.ucrawler.policies.RegexUrlCleaner" additivity="false">
         <level value="INFO" /> 
         <appender-ref ref="puregedUrl"/>
     </logger>

@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.actions.tagme;
+package it.stilo.ucrawler.actions.tagme;
 
 /*
  * #%L
@@ -22,8 +22,8 @@ package it.stilo.uCrawler.actions.tagme;
  * #L%
  */
 
-import it.stilo.uCrawler.page.Page;
-import it.stilo.uCrawler.utils.tagme.StringUtils;
+import it.stilo.ucrawler.page.Page;
+import it.stilo.ucrawler.utils.tagme.StringUtils;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;

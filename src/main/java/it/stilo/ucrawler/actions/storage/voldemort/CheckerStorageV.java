@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.actions.storage.voldemort;
+package it.stilo.ucrawler.actions.storage.voldemort;
 
 /*
  * #%L
@@ -22,8 +22,8 @@ package it.stilo.uCrawler.actions.storage.voldemort;
  * #L%
  */
 
-import it.stilo.uCrawler.page.Page;
-import it.stilo.uCrawler.storage.StorageCheckerIF;
+import it.stilo.ucrawler.page.Page;
+import it.stilo.ucrawler.storage.StorageCheckerIF;
 import java.net.MalformedURLException;
 import java.util.HashMap;
 import java.util.HashSet;

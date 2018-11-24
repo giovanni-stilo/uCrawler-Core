@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.actions.storage.mapdb;
+package it.stilo.ucrawler.actions.storage.mapdb;
 
 /*
  * #%L

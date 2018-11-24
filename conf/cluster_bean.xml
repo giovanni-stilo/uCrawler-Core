@@ -42,7 +42,7 @@
                 
                 <hz:map-store write-delay-seconds="0" 
                               enabled="true" 
-                              class-name="it.stilo.uCrawler.url.mapstore.MapDBStore"/>
+                              class-name="it.stilo.ucrawler.url.mapstore.MapDBStore"/>
                     
                 <hz:near-cache time-to-live-seconds="0" 
                                max-idle-seconds="60" 

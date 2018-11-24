@@ -8,14 +8,14 @@
     <import resource="pianeta_mamma/page.xml" />
     <import resource="pianeta_mamma/messages.xml" />
 
-    <bean id="pianeta-mamma-forum-extraction" class="it.stilo.uCrawler.core.actions.PipelinedAction">
+    <bean id="pianeta-mamma-forum-extraction" class="it.stilo.ucrawler.core.actions.PipelinedAction">
         <property name="actions">
             <list>
                 <bean
-                    class="it.stilo.uCrawler.actions.extraction.flexible.ActionToExtraction">
+                    class="it.stilo.ucrawler.actions.extraction.flexible.ActionToExtraction">
                     <property name="action">
                         <bean
-                            class="it.stilo.uCrawler.actions.extraction.flexible.ExtractionPipeline">
+                            class="it.stilo.ucrawler.actions.extraction.flexible.ExtractionPipeline">
                             <property name="actions">
                                 <list>
                                     <ref bean="pianeta-mamma-breadcrumb" />
@@ -29,7 +29,7 @@
                         </bean>
                     </property>
                 </bean>
-                <bean class="it.stilo.uCrawler.actions.Test" />
+                <bean class="it.stilo.ucrawler.actions.Test" />
             </list>
         </property>
     </bean>

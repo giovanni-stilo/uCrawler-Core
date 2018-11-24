@@ -4,5 +4,5 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
     <bean id="link-to-crawl"
-              class="it.stilo.uCrawler.actions.extraction.flexible.LinkToCrawl" />
+              class="it.stilo.ucrawler.actions.extraction.flexible.LinkToCrawl" />
 </beans>

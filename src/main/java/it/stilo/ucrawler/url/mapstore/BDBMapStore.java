@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.url.mapstore;
+package it.stilo.ucrawler.url.mapstore;
 
 /*
  * #%L
@@ -25,7 +25,7 @@ package it.stilo.uCrawler.url.mapstore;
 import com.hazelcast.core.MapLoader;
 import com.hazelcast.core.MapStore;
 import com.sleepycat.persist.PrimaryIndex;
-import it.stilo.uCrawler.url.datastructure.HazelcastDataStructure;
+import it.stilo.ucrawler.url.datastructure.HazelcastDataStructure;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collection;

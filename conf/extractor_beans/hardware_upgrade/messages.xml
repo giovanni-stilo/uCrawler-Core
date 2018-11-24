@@ -8,11 +8,11 @@
 	<import resource="../put_to.xml" />
 
 	<bean id="hardware-upgrade-messages"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToAll"
 		p:target="table[id*=post]">
 		<property name="action">
 			<bean
-				class="it.stilo.uCrawler.actions.extraction.flexible.ExtractionPipeline">
+				class="it.stilo.ucrawler.actions.extraction.flexible.ExtractionPipeline">
 				<property name="actions">
 					<list>
 						<ref bean="hardware-upgrade-message-date" />
@@ -29,100 +29,100 @@
 
 	<!-- data del messaggio -->
 	<bean id="hardware-upgrade-message-date"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToFirst"
 		p:target="td.thead">
 		<property name="action">
 			<bean
-				class="it.stilo.uCrawler.actions.extraction.flexible.ExtractionPipeline"
+				class="it.stilo.ucrawler.actions.extraction.flexible.ExtractionPipeline"
 				p:actions-ref="hardware-upgrade-message-date-actions" />
 		</property>
 	</bean>
 
 	<util:list id="hardware-upgrade-message-date-actions">
-		<bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+		<bean class="it.stilo.ucrawler.actions.extraction.flexible.GetAndPut"
 			p:toDo-ref="get-text" p:where-ref="put-to-list-date" />
 		<ref bean="put-to-screen" />
 	</util:list>
 
 	<!-- testo del messaggio -->
 	<bean id="hardware-upgrade-message-text"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToFirst"
 		p:target="div[id*=post_message]">
 		<property name="action">
 			<bean
-				class="it.stilo.uCrawler.actions.extraction.flexible.ExtractionPipeline"
+				class="it.stilo.ucrawler.actions.extraction.flexible.ExtractionPipeline"
 				p:actions-ref="hardware-upgrade-message-text-actions" />
 		</property>
 	</bean>
 
 	<util:list id="hardware-upgrade-message-text-actions">
-		<bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+		<bean class="it.stilo.ucrawler.actions.extraction.flexible.GetAndPut"
 			p:toDo-ref="hardware-upgrade-get-clean-text" p:where-ref="put-to-list-message" />
 		<ref bean="put-to-screen" />
 	</util:list>
 
 	<bean id="hardware-upgrade-get-clean-text"
-		class="it.stilo.uCrawler.actions.extraction.flexible.GetCleanText"
+		class="it.stilo.ucrawler.actions.extraction.flexible.GetCleanText"
 		p:toRemove="div[style]:has(table)" />
 
 	<!-- id del messaggio -->
 	<bean id="hardware-upgrade-post-id"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToFirst"
 		p:target="table[id*=post] > tbody > tr > td.thead > a[href]">
 		<property name="action">
-			<bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+			<bean class="it.stilo.ucrawler.actions.extraction.flexible.GetAndPut"
 				p:toDo-ref="hardware-upgrade-get-post-id" p:where-ref="put-to-list-post-id" />
 		</property>
 	</bean>
 
 	<bean id="hardware-upgrade-get-post-id"
-		class="it.stilo.uCrawler.actions.extraction.flexible.GetHyperLink"
+		class="it.stilo.ucrawler.actions.extraction.flexible.GetHyperLink"
 		p:regex="(?&lt;=p=)\d+">
 	</bean>
 
 	<!-- utente che ha postato il messaggio -->
 	<bean id="hardware-upgrade-message-username"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToFirst"
 		p:target="div[id*=postmenu] &gt; a.bigusername , div[id*=postmenu]">
 		<property name="action">
 			<bean
-				class="it.stilo.uCrawler.actions.extraction.flexible.ExtractionPipeline"
+				class="it.stilo.ucrawler.actions.extraction.flexible.ExtractionPipeline"
 				p:actions-ref="hardware-upgrade-username-actions-list" />
 		</property>
 	</bean>
 
 	<util:list id="hardware-upgrade-username-actions-list">
-		<bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+		<bean class="it.stilo.ucrawler.actions.extraction.flexible.GetAndPut"
 			p:toDo-ref="get-text" p:where-ref="put-to-list-username" />
 		<ref bean="put-to-screen" />
 	</util:list>
 
 	<!-- id dell'utente -->
 	<bean id="hardware-upgrade-user-id"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToFirst"
 		p:target="div[id*=postmenu] > a[href]">
 		<property name="action">
-			<bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+			<bean class="it.stilo.ucrawler.actions.extraction.flexible.GetAndPut"
 				p:toDo-ref="hardware-upgrade-get-user-id" p:where-ref="put-to-list-user-id" />
 		</property>
 	</bean>
 
 	<bean id="hardware-upgrade-get-user-id"
-		class="it.stilo.uCrawler.actions.extraction.flexible.GetHyperLink"
+		class="it.stilo.ucrawler.actions.extraction.flexible.GetHyperLink"
 		p:regex="(?&lt;=u=)\d+">
 	</bean>
 	
 	<bean id="hardware-upgrade-post-url"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToFirst"
 		p:target="table.tborder > tbody > tr > td.thead[align=right] > a[href]">
 		<property name="action">
-			<bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+			<bean class="it.stilo.ucrawler.actions.extraction.flexible.GetAndPut"
 				p:toDo-ref="hardware-upgrade-get-post-url" p:where-ref="put-to-list-post-url" />
 		</property>
 	</bean>
 	
 	<bean id="hardware-upgrade-get-post-url"
-		class="it.stilo.uCrawler.actions.extraction.flexible.GetHyperLink">
+		class="it.stilo.ucrawler.actions.extraction.flexible.GetHyperLink">
 	</bean>
 	
 </beans>	

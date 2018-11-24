@@ -9,10 +9,10 @@
     <import resource="pianeta_mamma/messages.xml" />
 
     <bean id="pianeta-mamma-forum-extraction"
-              class="it.stilo.uCrawler.actions.extraction.flexible.ActionToExtraction">
+              class="it.stilo.ucrawler.actions.extraction.flexible.ActionToExtraction">
         <property name="action">
             <bean
-                class="it.stilo.uCrawler.actions.extraction.flexible.ExtractionPipeline">
+                class="it.stilo.ucrawler.actions.extraction.flexible.ExtractionPipeline">
                 <property name="actions">
                     <list>
                         <ref bean="pianeta-mamma-breadcrumb" />

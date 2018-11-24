@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.storage.db;
+package it.stilo.ucrawler.storage.db;
 
 /*
  * #%L
@@ -22,8 +22,8 @@ package it.stilo.uCrawler.storage.db;
  * #L%
  */
 
-import it.stilo.uCrawler.page.Page;
-import it.stilo.uCrawler.storage.StorageIF;
+import it.stilo.ucrawler.page.Page;
+import it.stilo.ucrawler.storage.StorageIF;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.security.MessageDigest;

@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.actions.tagme;
+package it.stilo.ucrawler.actions.tagme;
 
 /*
  * #%L
@@ -22,7 +22,7 @@ package it.stilo.uCrawler.actions.tagme;
  * #L%
  */
 
-import it.stilo.uCrawler.page.Page;
+import it.stilo.ucrawler.page.Page;
 import org.apache.lucene.document.Document;
 
 /**

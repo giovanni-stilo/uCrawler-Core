@@ -11,35 +11,35 @@
 
 	<!-- estrazione del breadcrumb -->
 	<bean id="health-forums-breadcrumb"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToAll"
 		p:target="span.navbar > a[href], td.navbar, div.navbar">
 		<property name="action">
-			<bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+			<bean class="it.stilo.ucrawler.actions.extraction.flexible.GetAndPut"
 				p:toDo-ref="get-text" p:where-ref="put-to-new-breadcrumb" />
 		</property>
 	</bean>
 
 	<!-- sezioni contenute nella pagina -->
 	<bean id="health-forums-sections"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToAll"
 		p:target="div.category_title > a[href] , td.alt2Active > table > tbody > tr > td[align=left] > div > a[href]:last-of-type"
 		p:action-ref="link-to-crawl" />
 
 	<!-- estrae i link alle discussioni contenuti nella pagina -->
 	<bean id="health-forums-threads"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToAll"
 		p:target="td[id*=td_threadtitle_] > div > [href]" p:action-ref="link-to-crawl" />
 
 	<!-- id della discussione -->
 	<bean id="health-forums-thread-id"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToFirst"
 		p:target="td > table > tbody > tr > td.navbar > a[href]">
 		<property name="action">
-			<bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+			<bean class="it.stilo.ucrawler.actions.extraction.flexible.GetAndPut"
 				p:where-ref="put-to-thread-id">
 				<property name="toDo">
 					<bean
-						class="it.stilo.uCrawler.actions.extraction.flexible.GetHyperLink"
+						class="it.stilo.ucrawler.actions.extraction.flexible.GetHyperLink"
 						p:regex="(?&lt;=/)\d+">
 					</bean>
 				</property>
@@ -49,7 +49,7 @@
 
 	<!-- i link alla pagine della sezione/discussione -->
 	<bean id="health-forums-next"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToAll"
 		p:target="div.pagenav td.alt1 > a[href]" p:action-ref="link-to-crawl" />
 
 </beans>

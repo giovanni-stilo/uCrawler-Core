@@ -18,7 +18,7 @@
         </property>
     </bean>
     	
-    <bean id="concurrentFetcher"  class="it.stilo.uCrawler.concurrentFetcher.ConcurrentFetcher">
+    <bean id="concurrentFetcher"  class="it.stilo.ucrawler.concurrentFetcher.ConcurrentFetcher">
         <property name="action">
             <ref bean="pipeline" />
         </property>
@@ -41,12 +41,12 @@
         <property name="hasLocalProxy" value="${p.hasLocalProxy}" />
 			
         <property name="robotHandler">
-            <bean id="robotHandler" class="it.stilo.uCrawler.fetcher.robotFile.RobotFileHandler">
+            <bean id="robotHandler" class="it.stilo.ucrawler.fetcher.robotFile.RobotFileHandler">
             </bean>
         </property>
     </bean>
 	
-    <bean id="proxyProvider" class="it.stilo.uCrawler.concurrentFetcher.proxy.ProxyAddressProvider">
+    <bean id="proxyProvider" class="it.stilo.ucrawler.concurrentFetcher.proxy.ProxyAddressProvider">
         <!-- Lista di oggetti ProxyAddress -->
         <property name="proxies">
             <list>
@@ -56,7 +56,7 @@
         </property>
     </bean>
 	
-    <bean id="downloaderBuilder" class="it.stilo.uCrawler.concurrentFetcher.downloader.DownloaderBuilder">
+    <bean id="downloaderBuilder" class="it.stilo.ucrawler.concurrentFetcher.downloader.DownloaderBuilder">
         <!-- stessa istanza pipeline del fetcher -->
         <property name="action">
             <ref bean="pipeline" />
@@ -71,24 +71,24 @@
             <ref bean="userAgent" />
         </property>
         <property name="maxConnections">
-            <bean id="maxConnections" class="it.stilo.uCrawler.concurrentFetcher.configuration.FixedValueConstraint">
+            <bean id="maxConnections" class="it.stilo.ucrawler.concurrentFetcher.configuration.FixedValueConstraint">
                 <constructor-arg value="20" />
             </bean>
         </property>
         <property name="connectionDelay">
-            <bean id="connectionDelay" class="it.stilo.uCrawler.concurrentFetcher.configuration.RandomValueConstraint">
+            <bean id="connectionDelay" class="it.stilo.ucrawler.concurrentFetcher.configuration.RandomValueConstraint">
                 <property name="max" value="10000"/>
                 <property name="min" value="2000"/>                
             </bean>
         </property>
         <property name="maxPageForDomain">
-            <bean id="maxPageForDomain" class="it.stilo.uCrawler.concurrentFetcher.configuration.FixedValueConstraint">
+            <bean id="maxPageForDomain" class="it.stilo.ucrawler.concurrentFetcher.configuration.FixedValueConstraint">
                 <constructor-arg value="20" />
             </bean>
         </property>
     </bean>
 	
-    <bean id="userAgent" class="it.stilo.uCrawler.concurrentFetcher.configuration.UserAgent">
+    <bean id="userAgent" class="it.stilo.ucrawler.concurrentFetcher.configuration.UserAgent">
         <property name="userAgentFilePath" value="src/main/resources/useragent"/>
         <!--<property name="defaultUserAgent" value="Mozilla/5.0 (compatible; CSI/0.6.1; +http://lcl.uniroma1.it/)"/>-->
         <property name="defaultUserAgent" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:28.0) Gecko/20100101 Firefox/28.0"/>

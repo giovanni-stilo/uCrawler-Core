@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.actions.extraction.flexible;
+package it.stilo.ucrawler.actions.extraction.flexible;
 
 /*
  * #%L
@@ -22,7 +22,7 @@ package it.stilo.uCrawler.actions.extraction.flexible;
  * #L%
  */
 
-import it.stilo.uCrawler.page.Page;
+import it.stilo.ucrawler.page.Page;
 
 import org.jsoup.nodes.Element;
 

@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.concurrentFetcher.downloader;
+package it.stilo.ucrawler.concurrentFetcher.downloader;
 
 /*
  * #%L
@@ -22,14 +22,14 @@ package it.stilo.uCrawler.concurrentFetcher.downloader;
  * #L%
  */
 
-import it.stilo.uCrawler.concurrentFetcher.configuration.NumericConstraintIF;
-import it.stilo.uCrawler.concurrentFetcher.configuration.UserAgentIF;
-import it.stilo.uCrawler.concurrentFetcher.proxy.Proxy;
-import it.stilo.uCrawler.concurrentFetcher.proxy.ProxyAddress;
-import it.stilo.uCrawler.core.actions.ActionIF;
-import it.stilo.uCrawler.core.actions.ActionsException;
-import it.stilo.uCrawler.page.Page;
-import it.stilo.uCrawler.utils.NamedConcurrentLinkedQueue;
+import it.stilo.ucrawler.concurrentFetcher.configuration.NumericConstraintIF;
+import it.stilo.ucrawler.concurrentFetcher.configuration.UserAgentIF;
+import it.stilo.ucrawler.concurrentFetcher.proxy.Proxy;
+import it.stilo.ucrawler.concurrentFetcher.proxy.ProxyAddress;
+import it.stilo.ucrawler.core.actions.ActionIF;
+import it.stilo.ucrawler.core.actions.ActionsException;
+import it.stilo.ucrawler.page.Page;
+import it.stilo.ucrawler.utils.NamedConcurrentLinkedQueue;
 
 import java.io.IOException;
 import java.util.NoSuchElementException;

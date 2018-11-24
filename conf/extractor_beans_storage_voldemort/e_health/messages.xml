@@ -8,11 +8,11 @@
     <import resource="../put_to.xml" />
 
     <bean id="e-health-messages"
-          class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+          class="it.stilo.ucrawler.actions.extraction.flexible.RouteToAll"
           p:target="div.vt_container div.first_post_row:has(div.vt_post_holder) , div.vt_container div.vt_postrow_holder > div.vt_postrow_rest">
         <property name="action">
             <bean
-                class="it.stilo.uCrawler.actions.extraction.flexible.ExtractionPipeline">
+                class="it.stilo.ucrawler.actions.extraction.flexible.ExtractionPipeline">
                 <property name="actions">
                     <list>
                         <ref bean="e-health-message-date" />
@@ -30,85 +30,85 @@
 
     <!-- data del messaggio -->
     <bean id="e-health-message-date"
-          class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+          class="it.stilo.ucrawler.actions.extraction.flexible.RouteToFirst"
           p:target="div.vt_message_head > div.left > div.vt_reply_timestamp , div.vt_post_info > div > span.vt_first_timestamp">
         <property name="action">
             <bean
-                class="it.stilo.uCrawler.actions.extraction.flexible.ExtractionPipeline"
+                class="it.stilo.ucrawler.actions.extraction.flexible.ExtractionPipeline"
                 p:actions-ref="e-health-message-date-actions" />
         </property>
     </bean>
 
     <util:list id="e-health-message-date-actions">
-        <bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+        <bean class="it.stilo.ucrawler.actions.extraction.flexible.GetAndPut"
               p:toDo-ref="get-text" p:where-ref="put-to-date" />
         <ref bean="put-to-screen" />
     </util:list>
 
     <!-- testo del messaggio -->
     <bean id="e-health-message-text"
-          class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+          class="it.stilo.ucrawler.actions.extraction.flexible.RouteToFirst"
           p:target="div.KonaBody">
         <property name="action">
             <bean
-                class="it.stilo.uCrawler.actions.extraction.flexible.ExtractionPipeline"
+                class="it.stilo.ucrawler.actions.extraction.flexible.ExtractionPipeline"
                 p:actions-ref="e-health-message-text-actions" />
         </property>
     </bean>
 
     <util:list id="e-health-message-text-actions">
-        <bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+        <bean class="it.stilo.ucrawler.actions.extraction.flexible.GetAndPut"
               p:toDo-ref="e-health-get-clean-text" p:where-ref="put-to-message" />
         <ref bean="put-to-screen" />
     </util:list>
 
     <bean id="e-health-get-clean-text"
-          class="it.stilo.uCrawler.actions.extraction.flexible.GetCleanText"
+          class="it.stilo.ucrawler.actions.extraction.flexible.GetCleanText"
           p:toRemove="div:has(td.quote)" />
 
     <!-- id del messaggio -->
     <bean id="e-health-post-id"
-          class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+          class="it.stilo.ucrawler.actions.extraction.flexible.RouteToFirst"
           p:target="div[id*=up_make_]">
         <property name="action">
-            <bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+            <bean class="it.stilo.ucrawler.actions.extraction.flexible.GetAndPut"
                   p:toDo-ref="e-health-get-post-id" p:where-ref="put-to-post-id" />
         </property>
     </bean>
 
-    <bean id="e-health-get-post-id" class="it.stilo.uCrawler.actions.extraction.flexible.GetId"
+    <bean id="e-health-get-post-id" class="it.stilo.ucrawler.actions.extraction.flexible.GetId"
           p:regex="(?&lt;=up_make_)\d+">
     </bean>
 
     <!-- utente che ha postato il messaggio -->
     <bean id="e-health-message-username"
-          class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+          class="it.stilo.ucrawler.actions.extraction.flexible.RouteToFirst"
           p:target=".vt_asked_by_user > a">
         <property name="action">
             <bean
-                class="it.stilo.uCrawler.actions.extraction.flexible.ExtractionPipeline"
+                class="it.stilo.ucrawler.actions.extraction.flexible.ExtractionPipeline"
                 p:actions-ref="e-health-username-actions-list" />
         </property>
     </bean>
 
     <util:list id="e-health-username-actions-list">
-        <bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+        <bean class="it.stilo.ucrawler.actions.extraction.flexible.GetAndPut"
               p:toDo-ref="get-text" p:where-ref="put-to-username" />
         <ref bean="put-to-screen" />
     </util:list>
 
     <!-- id dell'utente -->
     <bean id="e-health-user-id"
-          class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+          class="it.stilo.ucrawler.actions.extraction.flexible.RouteToFirst"
           p:target=".vt_asked_by_user > a[href]">
         <property name="action">
-            <bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+            <bean class="it.stilo.ucrawler.actions.extraction.flexible.GetAndPut"
                   p:toDo-ref="e-health-get-user-id" p:where-ref="put-to-user-id" />
         </property>
     </bean>
 
     <bean id="e-health-get-user-id"
-          class="it.stilo.uCrawler.actions.extraction.flexible.GetHyperLink"
+          class="it.stilo.ucrawler.actions.extraction.flexible.GetHyperLink"
           p:regex="(?&lt;=user_profile_)\d+">
     </bean>
 

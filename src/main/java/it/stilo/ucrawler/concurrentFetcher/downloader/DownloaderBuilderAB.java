@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.concurrentFetcher.downloader;
+package it.stilo.ucrawler.concurrentFetcher.downloader;
 
 /*
  * #%L
@@ -24,10 +24,10 @@ package it.stilo.uCrawler.concurrentFetcher.downloader;
 
 import org.springframework.beans.factory.annotation.Required;
 
-import it.stilo.uCrawler.concurrentFetcher.configuration.NumericConstraintIF;
-import it.stilo.uCrawler.concurrentFetcher.configuration.UserAgentIF;
-import it.stilo.uCrawler.concurrentFetcher.proxy.Proxy;
-import it.stilo.uCrawler.core.actions.ActionIF;
+import it.stilo.ucrawler.concurrentFetcher.configuration.NumericConstraintIF;
+import it.stilo.ucrawler.concurrentFetcher.configuration.UserAgentIF;
+import it.stilo.ucrawler.concurrentFetcher.proxy.Proxy;
+import it.stilo.ucrawler.core.actions.ActionIF;
 
 /**
  *

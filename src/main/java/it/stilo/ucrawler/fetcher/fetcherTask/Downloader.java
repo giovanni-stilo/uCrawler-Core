@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.fetcher.fetcherTask;
+package it.stilo.ucrawler.fetcher.fetcherTask;
 
 /*
  * #%L
@@ -22,9 +22,9 @@ package it.stilo.uCrawler.fetcher.fetcherTask;
  * #L%
  */
 
-import it.stilo.uCrawler.core.actions.ActionIF;
-import it.stilo.uCrawler.core.actions.ActionsException;
-import it.stilo.uCrawler.page.Page;
+import it.stilo.ucrawler.core.actions.ActionIF;
+import it.stilo.ucrawler.core.actions.ActionsException;
+import it.stilo.ucrawler.page.Page;
 
 import java.io.IOException;
 import java.util.concurrent.BlockingQueue;

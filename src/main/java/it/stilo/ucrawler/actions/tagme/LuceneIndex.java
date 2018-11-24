@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.actions.tagme;
+package it.stilo.ucrawler.actions.tagme;
 
 /*
  * #%L
@@ -22,9 +22,9 @@ package it.stilo.uCrawler.actions.tagme;
  * #L%
  */
 
-import it.stilo.uCrawler.core.actions.ActionIF;
-import it.stilo.uCrawler.core.actions.ActionsException;
-import it.stilo.uCrawler.page.Page;
+import it.stilo.ucrawler.core.actions.ActionIF;
+import it.stilo.ucrawler.core.actions.ActionsException;
+import it.stilo.ucrawler.page.Page;
 import java.io.File;
 import java.io.IOException;
 import org.apache.commons.io.FileUtils;

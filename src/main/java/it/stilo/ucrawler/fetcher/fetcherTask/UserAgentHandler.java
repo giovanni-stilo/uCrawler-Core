@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.fetcher.fetcherTask;
+package it.stilo.ucrawler.fetcher.fetcherTask;
 
 /*
  * #%L

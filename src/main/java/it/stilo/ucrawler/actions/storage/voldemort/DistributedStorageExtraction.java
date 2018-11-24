@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.actions.storage.voldemort;
+package it.stilo.ucrawler.actions.storage.voldemort;
 
 /*
  * #%L
@@ -22,9 +22,9 @@ package it.stilo.uCrawler.actions.storage.voldemort;
  * #L%
  */
 
-import it.stilo.uCrawler.actions.extraction.flexible.ExtractionException;
-import it.stilo.uCrawler.actions.extraction.flexible.ExtractionIF;
-import it.stilo.uCrawler.page.Page;
+import it.stilo.ucrawler.actions.extraction.flexible.ExtractionException;
+import it.stilo.ucrawler.actions.extraction.flexible.ExtractionIF;
+import it.stilo.ucrawler.page.Page;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
@@ -84,12 +84,12 @@ public class DistributedStorageExtraction implements ExtractionIF {
         //HashMap<String, String> map = new HashMap<String, String>();
         HashMap<String, Object> map = new HashMap<String, Object>();
         //for(Classes){
-        Object field = page.getFromContext(it.stilo.uCrawler.actions.extraction.flexible.PutToField.class);
+        Object field = page.getFromContext(it.stilo.ucrawler.actions.extraction.flexible.PutToField.class);
 
         try {
             map.putAll((Map<String, Object>) field);
         } catch (ClassCastException ex) {
-            map.put(it.stilo.uCrawler.actions.extraction.flexible.PutToField.class.getCanonicalName(), field);
+            map.put(it.stilo.ucrawler.actions.extraction.flexible.PutToField.class.getCanonicalName(), field);
         }
 
         Object obj = page;

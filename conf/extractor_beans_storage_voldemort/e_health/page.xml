@@ -11,43 +11,43 @@
 
     <!-- estrazione del breadcrumb -->
     <bean id="e-health-breadcrumb"
-              class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+              class="it.stilo.ucrawler.actions.extraction.flexible.RouteToAll"
               p:target="div.vt_h2 > div > a[href] , div.vt_h2 > h1.caps , div.fp_h2 > a , div.fp_h2 > h1 , div.forums_header > h1" >
         <property name="action">
-            <bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+            <bean class="it.stilo.ucrawler.actions.extraction.flexible.GetAndPut"
                               p:toDo-ref="get-text" p:where-ref="put-to-new-breadcrumb" />
         </property>
     </bean>
 
     <!-- i link alla pagine della sezione/discussione -->
     <bean id="e-health-sections"
-              class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+              class="it.stilo.ucrawler.actions.extraction.flexible.RouteToAll"
               p:target="div.forums_forum_row > div[onclick] > a[href]"
               p:action-ref="link-to-crawl" />
 
     <!-- estrae i link alle discussioni contenuti nella pagina -->
     <bean id="e-health-threads"
-              class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+              class="it.stilo.ucrawler.actions.extraction.flexible.RouteToAll"
               p:target="div.fp_topic_content_title > a[href]" p:action-ref="link-to-crawl" />
 
     <!-- id della discussione -->
     <bean id="e-health-thread-id"
-              class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+              class="it.stilo.ucrawler.actions.extraction.flexible.RouteToFirst"
               p:target="div.vt_buttons > div.vt_reply_img > a[href]">
         <property name="action">
-            <bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+            <bean class="it.stilo.ucrawler.actions.extraction.flexible.GetAndPut"
                               p:toDo-ref="e-health-get-thread-id" p:where-ref="put-to-thread-id" />
         </property>
     </bean>
 
     <bean id="e-health-get-thread-id"
-              class="it.stilo.uCrawler.actions.extraction.flexible.GetHyperLink"
+              class="it.stilo.ucrawler.actions.extraction.flexible.GetHyperLink"
               p:regex="((?&lt;=t)|(?&lt;=topic))\d+">
     </bean>
 
     <!-- il link alla pagina successiva nella sezione o nella discussione -->
     <bean id="e-health-next"
-              class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+              class="it.stilo.ucrawler.actions.extraction.flexible.RouteToAll"
               p:target="a.pagination_number , div.vt_num_replies > a[href]" p:action-ref="link-to-crawl" />
 
 </beans>

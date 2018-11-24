@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.page;
+package it.stilo.ucrawler.page;
 
 /*
  * #%L
@@ -22,8 +22,8 @@ package it.stilo.uCrawler.page;
  * #L%
  */
 
-import it.stilo.uCrawler.fetcher.FetcherAB;
-import it.stilo.uCrawler.utils.UrlEncoder;
+import it.stilo.ucrawler.fetcher.FetcherAB;
+import it.stilo.ucrawler.utils.UrlEncoder;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Comparator;

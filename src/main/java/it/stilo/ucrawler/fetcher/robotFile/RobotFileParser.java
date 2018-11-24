@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.fetcher.robotFile;
+package it.stilo.ucrawler.fetcher.robotFile;
 
 /*
  * #%L

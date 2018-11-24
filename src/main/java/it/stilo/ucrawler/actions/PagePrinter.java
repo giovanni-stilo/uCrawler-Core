@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.actions;
+package it.stilo.ucrawler.actions;
 
 /*
  * #%L
@@ -22,11 +22,11 @@ package it.stilo.uCrawler.actions;
  * #L%
  */
 
-import it.stilo.uCrawler.core.actions.ActionsException;
-import it.stilo.uCrawler.core.actions.ActionIF;
+import it.stilo.ucrawler.core.actions.ActionsException;
+import it.stilo.ucrawler.core.actions.ActionIF;
 import org.apache.log4j.Logger;
 
-import it.stilo.uCrawler.page.Page;
+import it.stilo.ucrawler.page.Page;
 
 /**
  *

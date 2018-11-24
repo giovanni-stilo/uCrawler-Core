@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.actions.example;
+package it.stilo.ucrawler.actions.example;
 
 /*
  * #%L
@@ -22,12 +22,12 @@ package it.stilo.uCrawler.actions.example;
  * #L%
  */
 
-import it.stilo.uCrawler.core.actions.ActionsException;
-import it.stilo.uCrawler.core.actions.ActionIF;
+import it.stilo.ucrawler.core.actions.ActionsException;
+import it.stilo.ucrawler.core.actions.ActionIF;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.stilo.uCrawler.page.Page;
+import it.stilo.ucrawler.page.Page;
 import java.net.URI;
 import java.net.URISyntaxException;
 

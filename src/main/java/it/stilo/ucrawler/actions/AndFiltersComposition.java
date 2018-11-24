@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.actions;
+package it.stilo.ucrawler.actions;
 
 /*
  * #%L
@@ -22,9 +22,9 @@ package it.stilo.uCrawler.actions;
  * #L%
  */
 
-import it.stilo.uCrawler.core.actions.ActionFilterAB;
-import it.stilo.uCrawler.core.actions.ActionIF;
-import it.stilo.uCrawler.page.Page;
+import it.stilo.ucrawler.core.actions.ActionFilterAB;
+import it.stilo.ucrawler.core.actions.ActionIF;
+import it.stilo.ucrawler.page.Page;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Required;
 

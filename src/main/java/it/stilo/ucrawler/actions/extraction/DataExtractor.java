@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.actions.extraction;
+package it.stilo.ucrawler.actions.extraction;
 
 /*
  * #%L
@@ -28,9 +28,9 @@ import java.util.List;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-import it.stilo.uCrawler.core.actions.ActionIF;
-import it.stilo.uCrawler.core.actions.ActionsException;
-import it.stilo.uCrawler.page.Page;
+import it.stilo.ucrawler.core.actions.ActionIF;
+import it.stilo.ucrawler.core.actions.ActionsException;
+import it.stilo.ucrawler.page.Page;
 import java.net.URI;
 
 /**

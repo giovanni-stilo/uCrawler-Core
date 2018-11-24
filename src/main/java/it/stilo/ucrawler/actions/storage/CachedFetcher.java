@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.actions.storage;
+package it.stilo.ucrawler.actions.storage;
 
 /*
  * #%L
@@ -22,9 +22,9 @@ package it.stilo.uCrawler.actions.storage;
  * #L%
  */
 
-import it.stilo.uCrawler.fetcher.FetcherAB;
-import it.stilo.uCrawler.page.Page;
-import it.stilo.uCrawler.storage.StorageCheckerIF;
+import it.stilo.ucrawler.fetcher.FetcherAB;
+import it.stilo.ucrawler.page.Page;
+import it.stilo.ucrawler.storage.StorageCheckerIF;
 
 
 /**

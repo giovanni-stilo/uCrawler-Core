@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.utils.tagme;
+package it.stilo.ucrawler.utils.tagme;
 
 /*
  * #%L

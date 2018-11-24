@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.actions.storage;
+package it.stilo.ucrawler.actions.storage;
 
 /*
  * #%L
@@ -22,10 +22,10 @@ package it.stilo.uCrawler.actions.storage;
  * #L%
  */
 
-import it.stilo.uCrawler.page.Page;
-import it.stilo.uCrawler.storage.StorageCheckerIF;
-import it.stilo.uCrawler.url.URLManager;
-import it.stilo.uCrawler.url.datastructure.URLManagerDataStructureIF;
+import it.stilo.ucrawler.page.Page;
+import it.stilo.ucrawler.storage.StorageCheckerIF;
+import it.stilo.ucrawler.url.URLManager;
+import it.stilo.ucrawler.url.datastructure.URLManagerDataStructureIF;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.util.logging.Level;

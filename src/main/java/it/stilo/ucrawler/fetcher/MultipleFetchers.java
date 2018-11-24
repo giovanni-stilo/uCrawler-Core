@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.fetcher;
+package it.stilo.ucrawler.fetcher;
 
 /*
  * #%L
@@ -22,7 +22,7 @@ package it.stilo.uCrawler.fetcher;
  * #L%
  */
 
-import it.stilo.uCrawler.page.Page;
+import it.stilo.ucrawler.page.Page;
 import java.util.List;
 import java.util.concurrent.LinkedBlockingQueue;
 

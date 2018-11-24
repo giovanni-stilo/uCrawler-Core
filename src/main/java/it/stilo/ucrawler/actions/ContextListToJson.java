@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.actions;
+package it.stilo.ucrawler.actions;
 
 /*
  * #%L
@@ -43,10 +43,10 @@ import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
-import it.stilo.uCrawler.actions.extraction.flexible.WhereAB;
-import it.stilo.uCrawler.core.actions.ActionIF;
-import it.stilo.uCrawler.core.actions.ActionsException;
-import it.stilo.uCrawler.page.Page;
+import it.stilo.ucrawler.actions.extraction.flexible.WhereAB;
+import it.stilo.ucrawler.core.actions.ActionIF;
+import it.stilo.ucrawler.core.actions.ActionsException;
+import it.stilo.ucrawler.page.Page;
 
 /**
  *

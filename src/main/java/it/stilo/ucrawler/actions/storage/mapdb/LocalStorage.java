@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.actions.storage.mapdb;
+package it.stilo.ucrawler.actions.storage.mapdb;
 
 /*
  * #%L
@@ -26,9 +26,9 @@ package it.stilo.uCrawler.actions.storage.mapdb;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
-import it.stilo.uCrawler.core.actions.ActionIF;
-import it.stilo.uCrawler.core.actions.ActionsException;
-import it.stilo.uCrawler.page.Page;
+import it.stilo.ucrawler.core.actions.ActionIF;
+import it.stilo.ucrawler.core.actions.ActionsException;
+import it.stilo.ucrawler.page.Page;
 import javax.annotation.PostConstruct;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.log4j.Logger;

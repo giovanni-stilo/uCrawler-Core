@@ -15,7 +15,7 @@
     <import resource="extractor_beans_storage_voldemort/e_health.xml" />
     <!--/test-->
     
-    <bean id="cachedFetcher" class="it.stilo.uCrawler.actions.storage.CachedFetcher">
+    <bean id="cachedFetcher" class="it.stilo.ucrawler.actions.storage.CachedFetcher">
         <property name="action">
             <ref bean="pipeline"/>
         </property>
@@ -27,42 +27,42 @@
         </constructor-arg>  
     </bean>   
     
-    <bean id="crawler" class="it.stilo.uCrawler.crawler.Crawler"
+    <bean id="crawler" class="it.stilo.ucrawler.crawler.Crawler"
           p:manager-ref="urlsManager" p:fetcher-ref="cachedFetcher"
           p:sleepTime="500" />
 
     <!-- pipeline di azioni -->
-    <bean id="pipeline" class="it.stilo.uCrawler.core.actions.PipelinedAction"
+    <bean id="pipeline" class="it.stilo.ucrawler.core.actions.PipelinedAction"
           p:actions-ref="pipeline-actions" depends-on="voldServ"/>
 
     <util:list id="pipeline-actions">
-        <bean id="pipeline1" class="it.stilo.uCrawler.core.actions.PipelinedAction"
+        <bean id="pipeline1" class="it.stilo.ucrawler.core.actions.PipelinedAction"
               p:actions-ref="pipeline1-actions" />
-        <bean class="it.stilo.uCrawler.url.UrlManagerToActionAdapter" c:_0-ref="urlsManager"/>
+        <bean class="it.stilo.ucrawler.url.UrlManagerToActionAdapter" c:_0-ref="urlsManager"/>
     </util:list>
 
     <util:list id="pipeline1-actions">
 
-        <bean class="it.stilo.uCrawler.actions.UrlRegexBasedFilter"
+        <bean class="it.stilo.ucrawler.actions.UrlRegexBasedFilter"
               c:_0-ref="hardware-upgrade-forum-extraction" p:regex=".*hwupgrade\.it.*$"
               p:comply="true" />
         
-        <bean class="it.stilo.uCrawler.actions.UrlRegexBasedFilter"
+        <bean class="it.stilo.ucrawler.actions.UrlRegexBasedFilter"
               c:_0-ref="better-medicine-forum-extraction" p:regex=".*bettermedicine\.com.*$"
               p:comply="true" />
 
-        <bean class="it.stilo.uCrawler.actions.UrlRegexBasedFilter"
+        <bean class="it.stilo.ucrawler.actions.UrlRegexBasedFilter"
               c:_0-ref="health-forums-extraction" p:regex=".*health-forums\.org.*$"
               p:comply="true" />
 
-        <bean class="it.stilo.uCrawler.actions.UrlRegexBasedFilter"
+        <bean class="it.stilo.ucrawler.actions.UrlRegexBasedFilter"
               c:_0-ref="pianeta-mamma-forum-extraction" p:regex=".*pianetamamma\.it.*$"
               p:comply="true" />
    
-        <bean class="it.stilo.uCrawler.actions.UrlRegexBasedFilter"
+        <bean class="it.stilo.ucrawler.actions.UrlRegexBasedFilter"
               c:_0-ref="e-health-forum-extraction" p:regex=".*ehealthforum\.com.*$"
               p:comply="true" />
-        <bean class ="it.stilo.uCrawler.actions.storage.voldemort.DistributedStorage" depends-on="voldServ">
+        <bean class ="it.stilo.ucrawler.actions.storage.voldemort.DistributedStorage" depends-on="voldServ">
             <property name="store">
                 <ref bean="storeName" />
             </property>
@@ -70,7 +70,7 @@
                 <ref bean="clientFactory" />
             </property>    
         </bean>      
-        <bean class="it.stilo.uCrawler.actions.storage.voldemort.DistributedStorageLoadTest">
+        <bean class="it.stilo.ucrawler.actions.storage.voldemort.DistributedStorageLoadTest">
             <property name="store">
                 <ref bean="storeName" />
             </property>
@@ -82,15 +82,15 @@
     </util:list>
 
     <!-- seed nell'UrlManager -->
-    <bean class="it.stilo.uCrawler.url.SeedsIgniter" c:_0-ref="urlsManager"
+    <bean class="it.stilo.ucrawler.url.SeedsIgniter" c:_0-ref="urlsManager"
           c:_1-ref="seeds" />
 
-    <bean id="urlsManager" class="it.stilo.uCrawler.actions.storage.CachedURLManager">
+    <bean id="urlsManager" class="it.stilo.ucrawler.actions.storage.CachedURLManager">
         <property name="ck">
             <ref bean="DistributedDBCk" />
         </property>
         <constructor-arg>
-            <bean class="it.stilo.uCrawler.url.datastructure.SimpleDataStructure"/>
+            <bean class="it.stilo.ucrawler.url.datastructure.SimpleDataStructure"/>
         </constructor-arg>
     </bean>
 
@@ -107,7 +107,7 @@
         <bean class="java.net.URI" c:_0="http://ehealthforum.com/health/health_forums.html" /> 
     </util:list>
     
-    <bean id="voldExtractClient" class ="it.stilo.uCrawler.actions.storage.voldemort.DistributedStorageExtraction">
+    <bean id="voldExtractClient" class ="it.stilo.ucrawler.actions.storage.voldemort.DistributedStorageExtraction">
         <property name="store">
             <ref bean="storeNameExtract" />
         </property>
@@ -116,7 +116,7 @@
         </property>    
     </bean>   
      
-    <bean id="voldServ" class="it.stilo.uCrawler.actions.storage.voldemort.VoldServ">
+    <bean id="voldServ" class="it.stilo.ucrawler.actions.storage.voldemort.VoldServ">
         <property name="voldemortServer">
             <bean  class="voldemort.server.VoldemortServer">
                 <constructor-arg>
@@ -144,7 +144,7 @@
         <constructor-arg value="CSI"/>
     </bean>   
     
-    <bean name="DistributedDBCk" class="it.stilo.uCrawler.actions.storage.voldemort.CheckerStorageV" depends-on="voldServ">                
+    <bean name="DistributedDBCk" class="it.stilo.ucrawler.actions.storage.voldemort.CheckerStorageV" depends-on="voldServ">                
         <property name="storeName">
             <ref bean="storeName" />
         </property>

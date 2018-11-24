@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.fetcher;
+package it.stilo.ucrawler.fetcher;
 
 /*
  * #%L
@@ -22,8 +22,8 @@ package it.stilo.uCrawler.fetcher;
  * #L%
  */
 
-import it.stilo.uCrawler.core.actions.ActionIF;
-import it.stilo.uCrawler.page.Page;
+import it.stilo.ucrawler.core.actions.ActionIF;
+import it.stilo.ucrawler.page.Page;
 import org.springframework.beans.factory.annotation.Required;
 
 /**

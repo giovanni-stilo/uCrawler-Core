@@ -11,38 +11,38 @@
 
 	<!-- estrazione del breadcrumb -->
 	<bean id="better-medicine-breadcrumb"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToAll"
 		p:target="div[id=breadcrumb] > ul > li.navbit > a[href] , div[id=pagetitle] > h1">
 		<property name="action">
-			<bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+			<bean class="it.stilo.ucrawler.actions.extraction.flexible.GetAndPut"
 				p:toDo-ref="get-text" p:where-ref="put-to-new-breadcrumb" />
 		</property>
 	</bean>
 
 	<!-- estrae i link alle sezioni del forum contenuti nella pagina -->
 	<bean id="better-medicine-sections"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToAll"
 		p:target="div.forumdata a[href] , span.forumtitle > a[href]"
 		p:action-ref="link-to-crawl" />
 
 	<!-- estrae i link alle discussioni contenuti nella pagina -->
 	<bean id="better-medicine-threads"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToAll"
 		p:target="h3.threadtitle > a[href]" p:action-ref="link-to-crawl">
 	</bean>
 
 	<!-- id della discussione -->
 	<bean id="better-medicine-thread-id"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToFirst"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToFirst"
 		p:target="div[id=pagetitle] > h1 > span.threadtitle > a[href]">
 		<property name="action">
-			<bean class="it.stilo.uCrawler.actions.extraction.flexible.GetAndPut"
+			<bean class="it.stilo.ucrawler.actions.extraction.flexible.GetAndPut"
 				p:toDo-ref="better-medicine-get-thread-id" p:where-ref="put-to-thread-id" />
 		</property>
 	</bean>
 
 	<bean id="better-medicine-get-thread-id"
-		class="it.stilo.uCrawler.actions.extraction.flexible.GetHyperLink"
+		class="it.stilo.ucrawler.actions.extraction.flexible.GetHyperLink"
 		p:regex="(?&lt;=showthread.php/)\d+">
 	</bean>
 
@@ -52,7 +52,7 @@
 	<!-- usare "span.prev_next > a[rel=next]" come target di RouteToFirst per 
 		evitare il problema -->
 	<bean id="better-medicine-next"
-		class="it.stilo.uCrawler.actions.extraction.flexible.RouteToAll"
+		class="it.stilo.ucrawler.actions.extraction.flexible.RouteToAll"
 		p:target="div.pagination_bottom span > a[href] , div.threadpagenav span > a[href]" p:action-ref="link-to-crawl" />
 
 </beans>

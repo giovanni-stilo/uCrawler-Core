@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.actions.extraction.flexible.textops;
+package it.stilo.ucrawler.actions.extraction.flexible.textops;
 
 /*
  * #%L

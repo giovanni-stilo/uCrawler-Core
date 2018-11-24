@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.concurrentFetcher.downloader;
+package it.stilo.ucrawler.concurrentFetcher.downloader;
 
 /*
  * #%L

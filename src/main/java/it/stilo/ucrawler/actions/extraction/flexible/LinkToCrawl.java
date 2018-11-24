@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.actions.extraction.flexible;
+package it.stilo.ucrawler.actions.extraction.flexible;
 
 /*
  * #%L
@@ -22,8 +22,8 @@ package it.stilo.uCrawler.actions.extraction.flexible;
  * #L%
  */
 
-import it.stilo.uCrawler.page.Page;
-import it.stilo.uCrawler.utils.UrlEncoder;
+import it.stilo.ucrawler.page.Page;
+import it.stilo.ucrawler.utils.UrlEncoder;
 
 import java.net.URI;
 import java.net.URISyntaxException;

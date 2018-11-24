@@ -1,4 +1,4 @@
-package it.stilo.uCrawler.crawler.apps;
+package it.stilo.ucrawler.crawler.apps;
 
 /*
  * #%L
@@ -23,7 +23,7 @@ package it.stilo.uCrawler.crawler.apps;
  */
 
 
-import it.stilo.uCrawler.crawler.Crawler;
+import it.stilo.ucrawler.crawler.Crawler;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 /**

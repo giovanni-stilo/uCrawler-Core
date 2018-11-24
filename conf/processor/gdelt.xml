@@ -14,13 +14,13 @@
 
     <!-- use this to process cache sequentially -->
 
-    <bean id="runner" class="it.stilo.uCrawler.cache.CacheProcessorRunner">
+    <bean id="runner" class="it.stilo.ucrawler.cache.CacheProcessorRunner">
         <constructor-arg>
             <ref bean="processor" />
         </constructor-arg>
     </bean>
 
-    <bean id="processor" class="it.stilo.uCrawler.cache.CacheProcessor">
+    <bean id="processor" class="it.stilo.ucrawler.cache.CacheProcessor">
         <constructor-arg>
             <ref bean="pipeline" />
         </constructor-arg>
@@ -29,22 +29,22 @@
         </constructor-arg>
     </bean>
 
-    <!--	<bean id="actions" class="it.stilo.uCrawler.actions.ConcurrentActionDispatcher">
+    <!--	<bean id="actions" class="it.stilo.ucrawler.actions.ConcurrentActionDispatcher">
             <constructor-arg ref="pipeline" />
             <constructor-arg value="50" />
     </bean>-->
     
-   <bean id="pipeline" class="it.stilo.uCrawler.core.actions.PipelinedAction">
+   <bean id="pipeline" class="it.stilo.ucrawler.core.actions.PipelinedAction">
         <property name="actions">
             <list>
-           <!-- <bean class="it.stilo.uCrawler.actions.tagme.CleanPage" />
-            <bean class="it.stilo.uCrawler.actions.tagme.ReaderAndSplitterFile" init-method="init" destroy-method="finalize">
+           <!-- <bean class="it.stilo.ucrawler.actions.tagme.CleanPage" />
+            <bean class="it.stilo.ucrawler.actions.tagme.ReaderAndSplitterFile" init-method="init" destroy-method="finalize">
             <property name="fileName" value="../gdelt-tsv/filteredNews" />
             <property name="mapName" value="../gdelt-tsv/testdb" /> 
             </bean>
-            <bean class="it.stilo.uCrawler.actions.tagme.Tagger"/>
-           <bean class="it.stilo.uCrawler.actions.tagme.PrintPage" />-->
-           <bean class="it.stilo.uCrawler.actions.tagme.HTMLExctractor" init-method="init" destroy-method="finalize">
+            <bean class="it.stilo.ucrawler.actions.tagme.Tagger"/>
+           <bean class="it.stilo.ucrawler.actions.tagme.PrintPage" />-->
+           <bean class="it.stilo.ucrawler.actions.tagme.HTMLExctractor" init-method="init" destroy-method="finalize">
            <property name="tags" value="./htmlAnalyzer/tags" />
            <property name="classname" value="./htmlAnalyzer/classname" />
            <property name="id" value="./htmlAnalyzer/id" />
@@ -52,18 +52,18 @@
            <property name="classnameForPage" value="./htmlAnalyzer/classnameForPage" />
            <property name="idForPage" value="./htmlAnalyzer/idForPage" />
            </bean>
-          <!-- <bean class="it.stilo.uCrawler.actions.tagme.LuceneIndex" init-method="init" destroy-method="finalize"/>-->
+          <!-- <bean class="it.stilo.ucrawler.actions.tagme.LuceneIndex" init-method="init" destroy-method="finalize"/>-->
            
             </list>
         </property>
     </bean>
 
-    <!--<bean id="printer" class="it.stilo.uCrawler.actions.PagePrinter"></bean>-->
+    <!--<bean id="printer" class="it.stilo.ucrawler.actions.PagePrinter"></bean>-->
 
     <bean id="cache"
-          class="it.stilo.uCrawler.actions.storage.mapdb.LocalStorageLoad">
+          class="it.stilo.ucrawler.actions.storage.mapdb.LocalStorageLoad">
         <constructor-arg>
-            <bean class="it.stilo.uCrawler.actions.storage.mapdb.MapDBInstance"
+            <bean class="it.stilo.ucrawler.actions.storage.mapdb.MapDBInstance"
                   destroy-method="destroy">
                  <!--<property name="dataDir" value="../GDELT" />-->
                  <property name="dataDir" value="storage/GDELT_1" />

@@ -13,7 +13,7 @@
     <import resource="concurrent_fetcher.xml"/>
 	
 	
-    <bean id="crawler" class="it.stilo.uCrawler.crawler.Crawler">
+    <bean id="crawler" class="it.stilo.ucrawler.crawler.Crawler">
         <property name="manager">
             <ref bean="urlsManager" />		
         </property>
@@ -28,30 +28,30 @@
 	
 	
 	
-    <bean id="pipeline" class="it.stilo.uCrawler.core.actions.PipelinedAction">
+    <bean id="pipeline" class="it.stilo.ucrawler.core.actions.PipelinedAction">
         <property name="actions">
             <list>
-                <bean class="it.stilo.uCrawler.actions.example.Extractor" />
-                <bean class="it.stilo.uCrawler.actions.RegexUrlCleaner">
+                <bean class="it.stilo.ucrawler.actions.example.Extractor" />
+                <bean class="it.stilo.ucrawler.actions.RegexUrlCleaner">
                     <!--<property name="regex" value="www\.hwupgrade\.it.*(\.(css|xml|jpe?g|png|ico))$" />-->
                     <property name="regex" value=".*hwupgrade\.it.*$" />
                     <property name="comply" value="true" />
                 </bean>                                                                
-                <bean class="it.stilo.uCrawler.actions.storage.JsonPageStorer" />
-                <!--<bean class="it.stilo.uCrawler.actions.PagePrinter" />-->
-                <bean class="it.stilo.uCrawler.url.UrlManagerToActionAdapter" c:_0-ref="urlsManager"/>               
+                <bean class="it.stilo.ucrawler.actions.storage.JsonPageStorer" />
+                <!--<bean class="it.stilo.ucrawler.actions.PagePrinter" />-->
+                <bean class="it.stilo.ucrawler.url.UrlManagerToActionAdapter" c:_0-ref="urlsManager"/>               
             </list>
         </property>
     </bean>
 
 
-    <bean id="urlsManager" class="it.stilo.uCrawler.url.URLManager">
+    <bean id="urlsManager" class="it.stilo.ucrawler.url.URLManager">
         <constructor-arg>
-            <bean class="it.stilo.uCrawler.url.datastructure.SimpleDataStructure"/>
+            <bean class="it.stilo.ucrawler.url.datastructure.SimpleDataStructure"/>
         </constructor-arg>
     </bean>
         
-    <bean class="it.stilo.uCrawler.url.SeedsIgniter">
+    <bean class="it.stilo.ucrawler.url.SeedsIgniter">
         <constructor-arg>
             <ref bean="urlsManager"/>
         </constructor-arg>

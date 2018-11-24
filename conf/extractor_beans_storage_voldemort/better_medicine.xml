@@ -7,14 +7,14 @@
     <import resource="better_medicine/page.xml" />
     <import resource="better_medicine/messages.xml" />
 
-    <bean id="better-medicine-forum-extraction" class="it.stilo.uCrawler.core.actions.PipelinedAction">
+    <bean id="better-medicine-forum-extraction" class="it.stilo.ucrawler.core.actions.PipelinedAction">
         <property name="actions">
             <list>
                 <bean
-                    class="it.stilo.uCrawler.actions.extraction.flexible.ActionToExtraction">
+                    class="it.stilo.ucrawler.actions.extraction.flexible.ActionToExtraction">
                     <property name="action">
                         <bean
-                            class="it.stilo.uCrawler.actions.extraction.flexible.ExtractionPipeline">
+                            class="it.stilo.ucrawler.actions.extraction.flexible.ExtractionPipeline">
                             <property name="actions">
                                 <list>
                                     <ref bean="better-medicine-breadcrumb" />
@@ -28,7 +28,7 @@
                         </bean>
                     </property>
                 </bean>
-                <bean class="it.stilo.uCrawler.actions.RegexUrlRewriter"
+                <bean class="it.stilo.ucrawler.actions.RegexUrlRewriter"
                                       p:regexToReplace="(\?)?s=\d*\w*(&amp;)?|(\?)?order=desc" />
             </list>
         </property>
