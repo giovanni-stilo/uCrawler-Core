@@ -44,12 +44,12 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.2.4</version>
-        </dependency>            
-        <dependency>
+        </dependency>
+        <!--<dependency>
             <groupId>com.project-voldemort</groupId>
             <artifactId>voldemort</artifactId>
             <version>1.5.9</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
@@ -96,7 +96,7 @@
             <artifactId>lucene-queries</artifactId> 
             <version>4.1.0</version> 
         </dependency> 
-       <dependency> 
+        <dependency> 
             <groupId>org.apache.lucene</groupId> 
             <artifactId>lucene-analyzers-common</artifactId> 
             <version>4.1.0</version> 
@@ -116,6 +116,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
                 <configuration>
                     <executable>java</executable>
                     <arguments>
@@ -164,9 +165,11 @@
             </plugin>
             
             <plugin>
+            
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>license-maven-plugin</artifactId>
-                <version>1.7</version>
+                <version>2.0.0</version>
+                
                 <configuration>
                     <licenseName>lgplv3</licenseName>
                     <licenseResolver>${project.baseUri}/src/license</licenseResolver>
@@ -194,7 +197,7 @@
         </resources>
     </build>
     
-    <repositories>
+    <!--<repositories>
         <repository>
             <id>stilo-maven-repo</id>
             <name>Personalized Maven - Repository</name>
@@ -206,6 +209,6 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
-    </repositories>
+    </repositories>-->
   
 </project>
